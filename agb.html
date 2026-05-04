@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGB – Occto</title>
+  <style>
+    :root {
+      --bg: #0b0b0c;
+      --text: #f6f7f8;
+      --muted: #a6a7ac;
+      --border: #2a2a2e;
+      --card: #111214;
+      --accent-line: #27272a;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      overflow-x: hidden;
+      color-scheme: dark
+    }
+
+    .vignette {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(80% 60% at 50% 0%, rgba(255, 255, 255, .05), transparent 60%);
+      z-index: 0
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 80px 24px 100px
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 48px;
+      transition: color .15s ease
+    }
+
+    .back:hover {
+      color: var(--text)
+    }
+
+    .back svg {
+      width: 14px;
+      height: 14px
+    }
+
+    .kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: #b5b6bb;
+      margin-bottom: 12px
+    }
+
+    h1 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      line-height: 1.1;
+      margin: 0 0 12px
+    }
+
+    .meta {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0 0 56px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .section {
+      margin-bottom: 48px
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -.01em;
+      color: var(--text);
+      margin: 0 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border)
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #c8c9ce;
+      margin: 0 0 14px
+    }
+
+    p:last-child {
+      margin-bottom: 0
+    }
+
+    .sub-heading {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e0e1e6;
+      margin: 20px 0 6px
+    }
+
+    .footer-legal {
+      margin-top: 64px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: #5e5f65
+    }
+  </style>
+</head>
+
+<body>
+  <div class="vignette"></div>
+
+  <div class="container">
+    <a href="index.html" class="back">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
+      Zurück zur Preisübersicht
+    </a>
+
+    <h1>Allgemeine Geschäftsbedingungen</h1>
+    <p class="meta">für die Dienstleistungen von:
+      <br />
+      Wesley Lopes Barbosa Oliveira<br />
+      Mühlgasse 31<br />
+      60486 Frankfurt am Main
+    </p>
+
+    <div class="section">
+      <h2>§ 1 Geltungsbereich und Vertragsgrundlagen</h2>
+      <p>Diese Allgemeinen Geschäftsbedingungen (nachfolgend „AGB") gelten für Verträge, Leistungen und Angebote
+        zwischen der Wesley Lopes Barbosa Oliveira, vertreten durch Wesley Lopes Barbosa Oliveira (nachfolgend
+        „Anbieter"), und ihren
+        Kunden (nachfolgend „Kunde").</p>
+      <p>Das Angebot des Anbieters richtet sich ausschließlich an Unternehmer im Sinne des § 14 BGB. Der Anbieter
+        erbringt keine Leistungen für Verbraucher im Sinne des § 13 BGB.</p>
+      <p>Entgegenstehende oder von diesen AGB abweichende Bedingungen des Kunden werden nicht anerkannt, es sei denn,
+        der Anbieter stimmt ihrer Geltung ausdrücklich schriftlich zu.</p>
+      <p>Der spezifische Leistungsumfang und die Vergütung ergeben sich aus dem individuellen Angebot bzw. dem vom
+        Kunden gewählten Dienstleistungspaket („Starter", „Business" etc.) sowie ggf. gebuchten Zusatzmodulen (z.B.
+        Newsletter-Modul).</p>
+    </div>
+
+    <div class="section">
+      <h2>§ 2 Vertragsgegenstand und Zustandekommen des Vertrages</h2>
+      <p>Gegenstand des Vertrages ist die Bereitstellung, Wartung und Pflege einer Website nach dem Modell
+        „Website-as-a-Service" (WaaS). Dies umfasst die Erstellung der Website gemäß dem gewählten Plan, das
+        Managed-Hosting, technische Updates, inhaltliche Pflege sowie ggf. Basismaßnahmen zur Suchmaschinenoptimierung
+        (SEO-Basic) während der Vertragslaufzeit.</p>
+      <p>Angebote des Anbieters sind freibleibend und unverbindlich.</p>
+      <p>Der Vertrag kommt zustande, indem der Kunde ein verbindliches Angebot des Anbieters (z.B. durch Unterschrift
+        oder Bestätigung in Textform) annimmt oder der Anbieter eine Bestellung des Kunden ausdrücklich bestätigt oder
+        mit der Leistungserbringung beginnt.</p>
+    </div>
+
+    <div class="section">
+      <h2>§ 3 Leistungen des Anbieters (Managed Service)</h2>
+      <p class="sub-heading">Website-Erstellung</p>
+      <p>Der Anbieter erstellt die Website basierend auf den Vorgaben des gewählten Pakets. Die Erstellung erfolgt in
+        Textform (z.B. E-Mail). Nach Fertigstellung und Abnahme durch den Kunden wird die Website veröffentlicht.</p>
+      <p class="sub-heading">Managed-Hosting</p>
+      <p>Das Hosting der Website ist integraler Bestandteil des Vertrages und erfolgt zur Sicherstellung der Wartungs-
+        und Sicherheitsleistungen ausschließlich auf der vom Anbieter verwalteten, DSGVO-konformen Infrastruktur. Ein
+        Anspruch des Kunden auf Zugriff auf die Serverinfrastruktur oder die Website-Quelldaten besteht während der
+        Mindestvertragslaufzeit nicht.</p>
+      <p>Der Anbieter strebt eine durchschnittliche Verfügbarkeit der Webserver von 99,5 % im Jahresmittel an.
+        Ausgenommen hiervon sind Ausfälle durch höhere Gewalt, netzbedingte Störungen außerhalb des direkten
+        Einflussbereichs des Anbieters sowie angekündigte Wartungsfenster.</p>
+      <p class="sub-heading">Wartung & Updates</p>
+      <p>Der Anbieter übernimmt die technische Administration, die Bereitstellung eines SSL-Zertifikats, tägliche
+        automatisierte Datensicherungen (Backups) sowie regelmäßige technische Updates (CMS, Plugins) zur Gewährleistung
+        der Sicherheit und Funktionsfähigkeit.</p>
+      <p class="sub-heading">Leistungsbeschreibung SEO-Basic (nur für den Business-Plan)</p>
+      <p>Die Leistung „SEO-Basic" beinhaltet Dienstleistungen zur technischen und inhaltlichen Optimierung der Website
+        für die Suchmaschine Google nach gängigen Industriestandards (On-Page-Optimierung). Der Anbieter schuldet
+        Maßnahmen, jedoch ausdrücklich kein bestimmtes Ranking, keine Platzierung in Suchergebnissen und keinen
+        bestimmten Erfolg (Dienstvertrag).</p>
+      <p class="sub-heading">Optionale Zusatzmodule (z.B. Newsletter-Modul)</p>
+      <p>Zusatzmodule können optional gebucht werden. Der technische Einrichtungsprozess und die Bereitstellung eines
+        Templates sind enthalten. Die inhaltliche Erstellung von Newslettern ist nicht Bestandteil des Moduls, sofern
+        nicht anders vereinbart. Für Zusatzmodule gelten die gleichen Laufzeiten und Kündigungsfristen wie für den
+        Hauptvertrag. Ein kombiniertes Kündigungsrecht mit dem Hauptvertrag wird hiermit vereinbart.</p>
+      <p class="sub-heading">Inhaltspflege</p>
+      <p>Der Business-Plan beinhaltet eine Stunde Inhaltspflege pro Monat. Darüber hinausgehender Aufwand wird auf
+        Anfrage zum jeweils gültigen Stundensatz separat abgerechnet. Nicht genutzte Stunden verfallen und werden nicht
+        auf Folgemonate übertragen.</p>
+    </div>
+
+    <div class="section">
+      <h2>§ 4 Mitwirkungspflichten des Kunden</h2>
+      <p>Der Kunde ist verpflichtet, dem Anbieter alle für die Erstellung und Pflege der Website erforderlichen Inhalte zeitgerecht und in digitaler Form zur Verfügung zu stellen. Zu diesen Inhalten zählen insbesondere: Unternehmenstexte (z.B. Beschreibungen, Leistungen, Über uns), Bilder und Fotos, Videos, Logos sowie sonstige unternehmensrelevante Informationen und Daten.</p>
+      <p>Stellt der Kunde keine oder unvollständige Inhalte bereit, ist der Anbieter berechtigt, Platzhalterinhalte zu verwenden oder die Fertigstellung der Website bis zur vollständigen Bereitstellung zu verzögern. Mehraufwand durch nachträgliche Inhaltsänderungen wird nach dem gültigen Stundensatz berechnet.</p>
+      <p>Der Kunde ist alleinverantwortlich für die rechtliche Zulässigkeit der von ihm bereitgestellten Inhalte. Er
+        garantiert, dass diese keine Rechte Dritter (insb. Urheber-, Marken- oder Persönlichkeitsrechte) verletzen und
+        nicht gegen gesetzliche Vorschriften verstoßen.</p>
+      <p>Verzögerungen bei der Bereitstellung der Inhalte durch den Kunden gehen nicht zu Lasten des Anbieters und
+        verlängern nicht die Fertigstellungsfrist.</p>
+      <p>Der Kunde verpflichtet sich, die erstellte Website nach Fertigstellungsmeldung unverzüglich abzunehmen. Die
+        Website gilt als abgenommen, wenn der Kunde innerhalb von 7 Werktagen nach Meldung keine wesentlichen Mängel in
+        Textform rügt oder die Website live geschaltet wird.</p>
+    </div>
+
+    <div class="section">
+      <h2>§ 5 Nutzungsrechte</h2>
+      <p>Der Anbieter räumt dem Kunden für die Dauer der Vertragslaufzeit ein einfaches, nicht übertragbares und nicht
+        unterlizenzierbares Nutzungsrecht an der erstellten Website und den vom Anbieter bereitgestellten Templates ein.
+        Dieses Nutzungsrecht ist auf die Darstellung der Website im Internet unter der vereinbarten Domain beschränkt.
+      </p>
+      <p>Ein Anspruch auf Herausgabe des Quellcodes (Source Code), von Datenbanken oder die Übertragung des
+        Nutzungsrechts auf externe Server besteht während der Mindestvertragslaufzeit nicht.</p>
+    </div>
+
+    <div class="section">
+      <h2>§ 6 Vergütung und Zahlungsbedingungen</h2>
+      <p>Bei Vertragsabschluss wird eine einmalige Einrichtungsgebühr fällig, deren Höhe sich nach dem gewählten Plan
+        richtet. Die Einrichtung der Website beginnt nach vollständigem Zahlungseingang dieser Gebühr.</p>
+      <p>Die laufende monatliche Service-Gebühr ist monatlich im Voraus zu zahlen.</p>
+      <p>Alle Preise verstehen sich als Netto-Preise zzgl. der gesetzlichen Mehrwertsteuer.</p>
+      <p>Der Kunde gerät automatisch in Verzug, wenn die Zahlung nicht innerhalb von 10 Tagen nach Fälligkeit eingeht.
+        Der Anbieter ist berechtigt, Verzugszinsen in gesetzlicher Höhe für B2B-Geschäfte zu fordern. Bei anhaltendem
+        Verzug (mehr als zwei Monatsraten) ist der Anbieter berechtigt, die Website vorübergehend zu sperren oder den
+        Vertrag fristlos zu kündigen.</p>
+    </div>
+
+    <div class="section">
+      <h2>§ 7 Laufzeit und Kündigung</h2>
+      <p>Der Servicevertrag für die Pläne Starter und Business hat eine Mindestvertragslaufzeit von 24 Monaten.</p>
+      <p>Die Kündigungsfrist beträgt drei Monate zum Ende der jeweiligen Vertragslaufzeit.</p>
+      <p>Erfolgt keine fristgerechte Kündigung, verlängert sich der Vertrag automatisch um weitere 12 Monate.</p>
+      <p>Die Kündigung bedarf der Textform (z.B. per E-Mail).</p>
+      <p>Das Recht zur außerordentlichen Kündigung aus wichtigem Grund bleibt unberührt.</p>
+    </div>
+
+    <div class="section">
+      <h2>§ 8 Gewährleistung und Haftung</h2>
+      <p>Der Anbieter haftet unbeschränkt für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit,
+        die auf einer vorsätzlichen oder fahrlässigen Pflichtverletzung des Anbieters oder seiner Erfüllungsgehilfen
+        beruhen.</p>
+      <p>Für sonstige Schäden haftet der Anbieter nur bei Vorsatz oder grober Fahrlässigkeit. Bei einfacher
+        Fahrlässigkeit haftet der Anbieter nur für die Verletzung wesentlicher Vertragspflichten (Kardinalpflichten),
+        deren Erfüllung die ordnungsgemäße Durchführung des Vertrages überhaupt erst ermöglicht. In diesem Fall ist die
+        Haftung auf den vertragstypischen, vorhersehbaren Schaden begrenzt.</p>
+      <p>Eine Haftung für netzbedingte Ausfälle der Internet-Infrastruktur oder Ausfälle der genutzten Rechenzentren,
+        die nicht im direkten Einflussbereich des Anbieters liegen, ist ausgeschlossen.</p>
+      <p>Die Gewährleistung des Anbieters ist auf die Behebung von technischen Mängeln an der Website beschränkt.</p>
+    </div>
+
+    <div class="section">
+      <h2>§ 9 Datenschutz und Geheimhaltung</h2>
+      <p>Die Parteien verpflichten sich, die jeweils geltenden datenschutzrechtlichen Bestimmungen, insbesondere die
+        DSGVO, einzuhalten.</p>
+      <p>Soweit der Anbieter im Rahmen des Hostings personenbezogene Daten des Kunden im Auftrag verarbeitet, werden die
+        Parteien einen separaten Auftragsverarbeitungsvertrag (AVV) abschließen.</p>
+      <p>Beide Parteien verpflichten sich, alle vertraulichen Informationen, die sie im Rahmen der Vertragsdurchführung
+        erhalten, geheim zu halten und nicht an Dritte weiterzugeben.</p>
+    </div>
+
+    <div class="section">
+      <h2>§ 10 Schlussbestimmungen</h2>
+      <p>Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts.</p>
+      <p>Ausschließlicher Gerichtsstand für alle Streitigkeiten aus oder im Zusammenhang mit diesem Vertrag ist der Sitz
+        der [Name Ihrer GbR], sofern der Kunde Kaufmann ist oder keinen allgemeinen Gerichtsstand in Deutschland hat.
+      </p>
+      <p>Sollten einzelne Bestimmungen dieser AGB unwirksam sein oder werden, so wird die Wirksamkeit der übrigen
+        Bestimmungen hierdurch nicht berührt. Anstelle der unwirksamen Bestimmung gilt eine Regelung als vereinbart, die
+        dem wirtschaftlichen Zweck der unwirksamen Bestimmung am nächsten kommt.</p>
+    </div>
+
+    <div class="footer-legal">
+      Stand: Mai 2026
+    </div>
+  </div>
+</body>
+
+</html>
