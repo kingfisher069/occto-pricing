@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Occto – Pricing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared-assets/style.css">
+</head>
+
+<body>
+  <section data-locked id="root">
+    <div class="vignette"></div>
+    <div class="accent-lines" aria-hidden="true">
+      <div class="hline"></div>
+      <div class="hline"></div>
+      <div class="hline"></div>
+      <div class="vline"></div>
+      <div class="vline"></div>
+      <div class="vline"></div>
+    </div>
+    <canvas class="particles" id="particles"></canvas>
+
+    <div class="container">
+      <div class="head">
+        <p class="kicker">Plan &amp; Pricing</p>
+        <h1 class="title">Website</h1>
+        <div class="toggle-wrap">
+          <div class="toggle-group">
+            <div class="toggle" role="tablist">
+              <button id="btnMonthly" class="active" type="button">Monatlich</button>
+              <button id="btnYearly" type="button">
+                Jährlich
+                <span class="save-pill">%</span>
+              </button>
+            </div>
+            <div class="save-line" id="saveLine">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid" id="grid"></div>
+
+      <hr class="section-divider">
+
+      <div class="addons">
+        <div class="addons-header">
+          <span class="addons-eyebrow">Optionale Zusatz-Module</span>
+        </div>
+        <div class="addons-grid">
+          <div class="addon-card">
+            <h3 class="addon-name">Newsletter-Modul</h3>
+            <p class="addon-avail">für Starter &amp; Business</p>
+            <div class="addon-price-row">
+              <span class="addon-amt">+39 €</span>
+              <span class="addon-per">/ Monat</span>
+            </div>
+            <div class="addon-divider"></div>
+            <ul class="addon-feat">
+              <li>Anmeldeformular auf der Website</li>
+              <li>Versand-Template inklusive</li>
+              <li>Bis zu XXXX Empfänger</li>
+            </ul>
+            <button class="btn btn-ghost" type="button" onclick="window.location.href='mailto:hello@occto.com?subject=Anfrage Newsletter-Modul'">Auswählen</button>
+          </div>
+          <div class="addon-card">
+            <h3 class="addon-name">Google-Maps Review</h3>
+            <p class="addon-avail">für alle Pläne</p>
+            <div class="addon-price-row">
+              <span class="addon-amt">+29 €</span>
+              <span class="addon-per">/ Monat</span>
+            </div>
+            <div class="addon-divider"></div>
+            <ul class="addon-feat">
+              <li>Bewertungslink auf der Website eingebunden</li>
+              <li>Auswertung der Rezensionen</li>
+              <li>Stärkt lokale Sichtbarkeit</li>
+            </ul>
+            <button class="btn btn-ghost" type="button" onclick="window.location.href='mailto:hello@occto.com?subject=Anfrage Google-Maps Review'">Auswählen</button>
+          </div>
+          <div class="addon-card">
+            <h3 class="addon-name">Terminbuchung-Modul</h3>
+            <p class="addon-avail">für alle Pläne</p>
+            <div class="addon-price-row">
+              <span class="addon-amt">+39 €</span>
+              <span class="addon-per">/ Monat</span>
+            </div>
+            <div class="addon-divider"></div>
+            <ul class="addon-feat">
+              <li>Online-Buchungsformular auf der Website</li>
+              <li>Automatische Bestätigungs-E-Mail</li>
+              <li>Kalender-Integration möglich</li>
+            </ul>
+            <button class="btn btn-ghost" type="button" onclick="window.location.href='mailto:hello@occto.com?subject=Anfrage Terminbuchung-Modul'">Auswählen</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="legal">
+        <p><b>Preise:</b> Alle angegebenen Preise verstehen sich als Nettopreise zzgl. der jeweils gültigen gesetzlichen
+          Mehrwertsteuer.</p>
+        <p><b>Laufzeit & Kündigung:</b> Der Servicevertrag für die Pläne Starter und Business hat eine
+          Mindestvertragslaufzeit von 24 Monaten. Die Kündigungsfrist beträgt drei Monate zum Ende der jeweiligen
+          Vertragslaufzeit. Erfolgt keine fristgerechte Kündigung, verlängert sich der Vertrag automatisch um weitere 12
+          Monate. Die Kündigung bedarf der Textform (z.&nbsp;B. E-Mail).</p>
+
+        <p><b>Newsletter-Modul:</b> Das Newsletter-Modul ist optional zubuchbar. Für dieses Modul gilt die gleiche
+          Mindestvertragslaufzeit und Kündigungsfrist wie für den Hauptvertrag. Ein kombiniertes Kündigungsrecht wird
+          hiermit vereinbart.</p>
+        <p><b>SEO-Basic (nur Business-Plan):</b> Die Leistung „SEO-Basic" beinhaltet Dienstleistungen zur technischen
+          und inhaltlichen Optimierung der Website für die Suchmaschine Google nach gängigen Industriestandards
+          (On-Page-Optimierung). Ein bestimmtes Ranking oder eine Platzierung in den Suchergebnissen wird ausdrücklich
+          nicht geschuldet.</p>
+
+        <div class="legal-footer">
+          <a href="../agb.html">Allgemeine Geschäftsbedingungen (AGB) ansehen &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // CHECK SVG icon
+    const ICON_CHECK = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+    // Yearly = 11 × monthly  →  1 Monat gratis
+    const YEAR_MULT = 11;
+
+    const plans = [
+      {
+        id: "starter",
+        name: "Starter",
+        concept: "Onepager",
+        monthly: 97,
+        setup: "490 €",
+        features: [
+          { label: "Umfang", value: "1 Seite (Onepager)" },
+          { label: "Design", value: "Modern & Mobil-optimiert" },
+          { label: "Marketing", value: "Basis-Sichtbarkeit" },
+          { label: "Analytics", value: "Basic-Analytics" },
+          { label: "Service", value: "Technik- & Sicherheits-Updates" },
+        ],
+        cta: "Starter wählen",
+        highlighted: false,
+      },
+      {
+        id: "business",
+        name: "Business",
+        concept: "Website",
+        monthly: 147,
+        setup: "790 €",
+        features: [
+          { label: "Umfang", value: "3 – 5 Unterseiten" },
+          { label: "Design", value: "Individuelles Marken-Design" },
+          { label: "Marketing", value: "SEO Basic Paket" },
+          { label: "Analytics", value: "Advance-Analytics" },
+          { label: "Service", value: "Inhalts-Pflege (1 h / Monat)" },
+        ],
+        cta: "Business wählen",
+        highlighted: true,
+        badge: "Empfehlung",
+      },
+      {
+        id: "enterprise",
+        name: "Enterprise",
+        concept: "Marke & Brand",
+        monthly: 297,
+        setup: "ab 1.490 €",
+        features: [
+          { label: "Umfang", value: "Ab 5 Unterseiten / Portfolios" },
+          { label: "Design", value: "Exklusives Design" },
+          { label: "Marketing", value: "Newsletter-System" },
+          { label: "Analytics", value: "Advance-Analytics" },
+          { label: "Service", value: "Strategie-Gespräch (Quartal)" },
+        ],
+        cta: "Enterprise anfragen",
+      },
+    ];
+
+    let isYearly = false;
+
+    const fmtEUR = (n) => new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n);
+
+    function render() {
+      const grid = document.getElementById("grid");
+      grid.innerHTML = "";
+      plans.forEach((p, i) => {
+        const yearly = p.monthly * YEAR_MULT;
+        const price = isYearly ? yearly : p.monthly;
+        const unit = isYearly ? "/ Jahr" : "/ Monat";
+        const popClass = p.highlighted ? "pop is-anim" : "";
+        const badge = p.badge
+          ? `<div class="badge">${p.badge}</div>` : "";
+
+        const featHtml = p.features.map(f =>
+          `<li>
+             <span class="check">${ICON_CHECK}</span>
+             <span class="value">${f.value}</span>
+           </li>`
+        ).join("");
+
+        const btnClass = p.highlighted ? "btn btn-primary" : "btn btn-ghost";
+        const savingsHtml = isYearly
+          ? `<div class="savings show"><span class="savings-dot"></span>Du sparst ${fmtEUR(p.monthly)} / Jahr</div>`
+          : `<div class="savings">&nbsp;</div>`;
+
+        const html = `
+        <div class="card ${popClass}" style="animation-delay:${0.32 + i * 0.08}s">
+          ${badge}
+          <h3 class="plan-name">${p.name}</h3>
+          <p class="plan-concept">${p.concept}</p>
+
+          <div class="price-row">
+            <span class="price">${fmtEUR(price)}</span>
+            <span class="price-unit">${unit}</span>
+          </div>
+          ${savingsHtml}
+          <div class="setup">Einmalige Einrichtung: <b>${p.setup}</b></div>
+
+          <div class="divider"></div>
+
+          <ul class="feat">${featHtml}</ul>
+
+          <button class="${btnClass}" type="button" onclick="window.location.href='mailto:hello@occto.com?subject=Anfrage Paket ${p.name}'">
+            ${p.cta}
+          </button>
+        </div>`;
+        grid.insertAdjacentHTML("beforeend", html);
+      });
+
+      // Update savings line under toggle
+      const line = document.getElementById("saveLine");
+      line.innerHTML = isYearly
+        ? `Bei jährlicher Zahlung: <b>1 Monat gratis</b> in jedem Paket inklusive`
+        : `&nbsp;`;
+    }
+
+    const btnM = document.getElementById("btnMonthly");
+    const btnY = document.getElementById("btnYearly");
+    btnM.addEventListener("click", () => { isYearly = false; btnM.classList.add("active"); btnY.classList.remove("active"); render(); });
+    btnY.addEventListener("click", () => { isYearly = true; btnY.classList.add("active"); btnM.classList.remove("active"); render(); });
+
+    render();
+
+    // After entrance animation, clear it so CSS hover transform can take over
+    document.getElementById("grid").addEventListener("animationend", e => {
+      const el = e.target;
+      if (el.classList.contains("pop")) {
+        el.style.animation = "none";
+        el.style.opacity = "1";
+      }
+    });
+
+    // Reveal animations
+    requestAnimationFrame(() => document.getElementById("root").classList.add("is-ready"));
+
+    // Particle background
+    (function () {
+      const canvas = document.getElementById("particles");
+      const ctx = canvas.getContext("2d");
+      function size() {
+        const r = canvas.parentElement.getBoundingClientRect();
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.floor(r.width * dpr);
+        canvas.height = Math.floor(r.height * dpr);
+        canvas.style.width = r.width + "px";
+        canvas.style.height = r.height + "px";
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      let parts = [], raf = 0;
+      const make = () => ({
+        x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+        v: Math.random() * 0.25 + 0.05, o: Math.random() * 0.35 + 0.15
+      });
+      function init() {
+        parts = [];
+        const w = canvas.width / (window.devicePixelRatio || 1);
+        const h = canvas.height / (window.devicePixelRatio || 1);
+        const count = Math.floor((w * h) / 12000);
+        for (let i = 0; i < count; i++) parts.push(make());
+      }
+      function draw() {
+        const w = canvas.width / (window.devicePixelRatio || 1);
+        const h = canvas.height / (window.devicePixelRatio || 1);
+        ctx.clearRect(0, 0, w, h);
+        parts.forEach(p => {
+          p.y -= p.v;
+          if (p.y < 0) { p.x = Math.random() * w; p.y = h + Math.random() * 40; p.v = Math.random() * 0.25 + 0.05; p.o = Math.random() * 0.35 + 0.15; }
+          ctx.fillStyle = `rgba(240,240,242,${p.o})`;
+          ctx.fillRect(p.x, p.y, 0.7, 2.2);
+        });
+        raf = requestAnimationFrame(draw);
+      }
+      size(); init(); draw();
+      new ResizeObserver(() => { size(); init(); }).observe(document.getElementById("root"));
+    })();
+  </script>
+</body>
+
+</html>

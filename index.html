@@ -4,869 +4,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Occto – Pricing</title>
+  <title>Occto – Unsere Produkte</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared-assets/style.css">
   <style>
-    :root {
-      --bg: #0b0b0c;
-      --text: #f6f7f8;
-      --muted: #a6a7ac;
-      --border: #2a2a2e;
-      --card: #111214;
-      --card-muted: #0f1012;
-      --card-pop: #15161a;
-      --accent-line: #27272a;
-      --glow: rgba(255, 255, 255, 0.08);
-      --btn-primary-bg: #f1f1f3;
-      --btn-primary-fg: #0c0c0d;
-      --btn-ghost-border: #2a2a2e;
-      --btn-ghost-hover: rgba(255, 255, 255, 0.04);
-    }
-
-    * {
-      box-sizing: border-box
-    }
-
-    html,
-    body {
-      margin: 0;
-      min-height: 100%;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-      overflow-x: hidden;
-      scrollbar-gutter: stable both-edges;
-      color-scheme: dark
-    }
-
-    section[data-locked] {
-      position: relative;
-      width: 100%;
-      min-height: 100vh;
-      overflow: hidden
-    }
-
-    .vignette {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: radial-gradient(80% 60% at 50% 12%, rgba(255, 255, 255, .06), transparent 60%)
-    }
-
-    .accent-lines {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: .7
-    }
-
-    .accent-lines .hline,
-    .accent-lines .vline {
-      position: absolute;
-      background: var(--accent-line);
-      animation-fill-mode: forwards
-    }
-
-    .accent-lines .hline {
-      left: 0;
-      right: 0;
-      height: 1px;
-      transform: scaleX(0);
-      transform-origin: 50% 50%
-    }
-
-    .accent-lines .vline {
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      transform: scaleY(0);
-      transform-origin: 50% 0%
-    }
-
-    .is-ready .accent-lines .hline:nth-of-type(1) {
-      top: 18%;
-      animation: drawX .6s ease .08s forwards
-    }
-
-    .is-ready .accent-lines .hline:nth-of-type(2) {
-      top: 50%;
-      animation: drawX .6s ease .16s forwards
-    }
-
-    .is-ready .accent-lines .hline:nth-of-type(3) {
-      top: 82%;
-      animation: drawX .6s ease .24s forwards
-    }
-
-    .is-ready .accent-lines .vline:nth-of-type(1) {
-      left: 18%;
-      animation: drawY .7s ease .20s forwards
-    }
-
-    .is-ready .accent-lines .vline:nth-of-type(2) {
-      left: 50%;
-      animation: drawY .7s ease .28s forwards
-    }
-
-    .is-ready .accent-lines .vline:nth-of-type(3) {
-      left: 82%;
-      animation: drawY .7s ease .36s forwards
-    }
-
-    @keyframes drawX {
-      to {
-        transform: scaleX(1)
-      }
-    }
-
-    @keyframes drawY {
-      to {
-        transform: scaleY(1)
-      }
-    }
-
-    canvas.particles {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      opacity: .5;
-      pointer-events: none
-    }
-
-    .container {
-      position: relative;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 80px 24px 60px
-    }
-
-    .head {
-      text-align: center;
-      max-width: 760px;
-      margin: 0 auto 48px
-    }
-
-    .kicker,
-    .title,
-    .subtitle,
-    .toggle-wrap {
-      opacity: 0;
-      transform: translateY(8px)
-    }
-
-    .is-ready .kicker {
-      animation: kIn .5s ease .08s forwards;
-      letter-spacing: .22em
-    }
-
-    .is-ready .title {
-      animation: tIn .6s cubic-bezier(.22, 1, .36, 1) .16s forwards
-    }
-
-    .is-ready .subtitle {
-      animation: sIn .6s ease .26s forwards
-    }
-
-    .is-ready .toggle-wrap {
-      animation: sIn .6s ease .32s forwards
-    }
-
-    @keyframes kIn {
-      to {
-        opacity: .9;
-        transform: none;
-        letter-spacing: .14em
-      }
-    }
-
-    @keyframes tIn {
-      to {
-        opacity: 1;
-        transform: none
-      }
-    }
-
-    @keyframes sIn {
-      to {
-        opacity: 1;
-        transform: none
-      }
-    }
-
-    .kicker {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .14em;
-      color: #b5b6bb;
-      margin-bottom: 12px
-    }
-
-    .title {
-      font-size: clamp(36px, 5vw, 60px);
-      font-weight: 700;
-      letter-spacing: -.02em;
-      line-height: 1.05;
-      margin: 0 0 16px
-    }
-
-    .title-dim {
-      color: #4a4b52
-    }
-
-    .subtitle {
-      font-size: 18px;
-      color: var(--muted);
-      margin: 0 0 24px
-    }
-
-    /* Toggle group with savings hint */
-    .toggle-group {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px
-    }
-
-    .toggle {
-      display: inline-flex;
-      align-items: center;
-      border-radius: 9999px;
-      padding: 5px;
-      background: rgba(255, 255, 255, .04);
-      border: 1px solid var(--border);
-      position: relative
-    }
-
-    .toggle button {
-      position: relative;
-      padding: 11px 26px;
-      border-radius: 9999px;
-      font-size: 14px;
-      font-weight: 600;
-      border: 0;
-      cursor: pointer;
-      color: var(--text);
-      background: transparent;
-      transition: background .2s ease, color .2s ease, box-shadow .2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px
-    }
-
-    .toggle button.active {
-      background: rgba(255, 255, 255, .10);
-      color: var(--text);
-      box-shadow: 0 1px 6px rgba(0, 0, 0, .35)
-    }
-
-    .toggle button .save-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      background: #f1f1f3;
-      color: #0c0c0d;
-      border-radius: 9999px;
-      padding: 2px 8px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .02em;
-      box-shadow: 0 0 0 3px rgba(255, 255, 255, .08)
-    }
-
-    .save-line {
-      font-size: 13px;
-      color: #b5b6bb;
-      min-height: 18px;
-      transition: opacity .2s
-    }
-
-    .save-line b {
-      color: #f6f7f8;
-      font-weight: 700
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-      max-width: 1200px;
-      margin: 0 auto
-    }
-
-    @media(min-width:900px) {
-      .grid {
-        grid-template-columns: repeat(3, 1fr)
-      }
-    }
-
-    .card {
-      position: relative;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 30px 28px;
-      opacity: 0;
-      transform: translateY(12px);
-      display: flex;
-      flex-direction: column
-    }
-
-    .is-ready .card {
-      animation: fadeUp .6s ease forwards
-    }
-
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0)
-      }
-    }
-
-    .card.pop {
-      background: var(--card-pop);
-      border-color: rgba(255, 255, 255, .55);
-      transform: scale(1.02);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
-      backdrop-filter: blur(6px);
-      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease
-    }
-
-    .card.pop:hover {
-      transform: scale(1.05);
-      border-color: rgba(255, 255, 255, .8);
-      box-shadow: 0 20px 56px rgba(0, 0, 0, .5), 0 0 0 1px rgba(255, 255, 255, .08)
-    }
-
-    .card.pop.is-anim {
-      animation: fadeUpPop .6s ease forwards
-    }
-
-    @keyframes fadeUpPop {
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1.02)
-      }
-    }
-
-    .badge {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      background: #f1f1f3;
-      border: none;
-      border-radius: 9999px;
-      padding: 4px 12px;
-      font-size: 11px;
-      font-weight: 700;
-      color: #0c0c0d;
-      display: flex;
-      align-items: center;
-      gap: 6px
-    }
-
-    .badge .dot {
-      display: inline-block;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: #0c0c0d;
-      opacity: .5;
-      animation: pulse 1.6s infinite
-    }
-
-    @keyframes pulse {
-      50% {
-        opacity: .4
-      }
-    }
-
-    .plan-name {
-      font-size: 26px;
-      font-weight: 700;
-      margin: 0 0 8px;
-      color: var(--text)
-    }
-
-    .plan-concept {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      color: #d4d5da;
-      margin: 0 0 24px
-    }
-
-    .price-row {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      flex-wrap: wrap
-    }
-
-    .price {
-      font-size: 42px;
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1;
-      letter-spacing: -.02em
-    }
-
-    .price-unit {
-      font-size: 13px;
-      color: var(--muted)
-    }
-
-    .savings {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 12px;
-      font-weight: 700;
-      color: #e6e7ea;
-      background: rgba(255, 255, 255, .06);
-      border: 1px solid rgba(255, 255, 255, .12);
-      border-radius: 9999px;
-      padding: 0 12px;
-      height: 0;
-      overflow: hidden;
-      margin-top: 0;
-      opacity: 0;
-      letter-spacing: .01em;
-      transition: opacity .25s ease, height .25s ease, margin-top .25s ease, padding .25s ease
-    }
-
-    .savings.show {
-      height: 30px;
-      margin-top: 10px;
-      padding: 5px 12px;
-      opacity: 1
-    }
-
-    .savings .savings-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, .6);
-      flex-shrink: 0
-    }
-
-    .setup {
-      margin-top: 14px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      background: rgba(255, 255, 255, .04);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 10px 14px;
-      font-size: 13px;
-      color: var(--text)
-    }
-
-    .setup b {
-      color: var(--text);
-      font-weight: 600;
-      font-size: 14px
-    }
-
-    .divider {
-      height: 1px;
-      background: var(--border);
-      margin: 24px 0
-    }
-
-    /* Cleaner, more readable bullets */
-    .feat {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px
-    }
-
-    .feat li {
-      display: flex;
-      align-items: center;
-      gap: 10px
-    }
-
-    .feat .check {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: #f6f7f8;
-      flex-shrink: 0
-    }
-
-    .feat .check svg {
-      width: 13px;
-      height: 13px
-    }
-
-    .feat .label {
-      display: none
-    }
-
-    .feat .value {
-      font-size: 14px;
-      line-height: 1.45;
-      color: var(--text);
-      font-weight: 400
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      padding: 13px 18px;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      transition: filter .15s ease, background .2s ease, transform .15s ease;
-      border: 1px solid transparent;
-      text-decoration: none;
-      margin-top: auto
-    }
-
-    .btn-primary {
-      background: var(--btn-primary-bg);
-      color: var(--btn-primary-fg)
-    }
-
-    .btn-primary:hover {
-      filter: brightness(.95)
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--text);
-      border-color: var(--btn-ghost-border)
-    }
-
-    .btn-ghost:hover {
-      background: var(--btn-ghost-hover)
-    }
-
-    .btn:active {
-      transform: translateY(1px)
-    }
-
-    .section-divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 80px 0 0
-    }
-
-    /* Add-ons */
-    .addons {
-      margin-top: 48px
-    }
-
-    .addons-header {
-      text-align: center;
-      margin-bottom: 24px
-    }
-
-    .addons-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      color: #7e8087;
-      font-weight: 600
-    }
-
-    .addons-eyebrow .pulse {
-      width: 4px;
-      height: 4px;
-      border-radius: 9999px;
-      background: rgba(255, 255, 255, .4);
-      animation: pulse 1.8s infinite
-    }
-
-    .addons-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px
-    }
-
-    @media(min-width: 760px) {
-      .addons-grid {
-        grid-template-columns: repeat(3, 1fr)
-      }
-    }
-
-    .addon-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px 24px;
-      display: flex;
-      flex-direction: column
-    }
-
-    .addon-name {
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: -.01em;
-      margin: 0 0 4px;
-      color: var(--text)
-    }
-
-    .addon-avail {
-      font-size: 12px;
-      color: #5e5f65;
-      margin: 0 0 16px
-    }
-
-    .addon-price-row {
-      display: flex;
-      align-items: baseline;
-      gap: 6px
-    }
-
-    .addon-amt {
-      font-size: 32px;
-      font-weight: 700;
-      color: var(--text);
-      letter-spacing: -.02em;
-      line-height: 1
-    }
-
-    .addon-per {
-      font-size: 13px;
-      color: var(--muted)
-    }
-
-    .addon-divider {
-      height: 1px;
-      background: var(--border);
-      margin: 20px 0
-    }
-
-    .addon-card .btn {
-      margin-top: 28px
-    }
-
-    .addon-feat {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px
-    }
-
-    .addon-feat li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      color: var(--text)
-    }
-
-    .addon-feat li::before {
-      content: "";
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      flex-shrink: 0;
-      background: rgba(255, 255, 255, .05);
-      border: 1px solid rgba(255, 255, 255, .08);
-      border-radius: 50%;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f6f7f8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
-      background-size: 9px;
-      background-repeat: no-repeat;
-      background-position: center
-    }
-
-    .legal {
-      margin-top: 48px;
-      border-top: 1px solid var(--border);
-      padding-top: 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px
-    }
-
-    .legal p {
-      margin: 0;
-      font-size: 13px;
-      line-height: 1.75;
-      color: #7e8087
-    }
-
-    .legal p b {
-      color: #a6a7ac;
-      font-weight: 600
-    }
-
-    .legal-footer {
-      margin-top: 24px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border)
-    }
-
-    .legal-footer a {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 14px;
-      font-weight: 500;
-      color: #a6a7ac;
-      text-decoration: none;
-      transition: color .15s ease
-    }
-
-    .legal-footer a:hover {
-      color: var(--text)
-    }
-
-    /* ── Mobile ──────────────────────────────────────────── */
-    @media(max-width: 640px) {
-
-      html,
-      body {
-        scrollbar-gutter: auto
-      }
-
-      .container {
-        padding: 40px 16px 48px
-      }
-
-      .head {
-        margin-bottom: 28px
-      }
-
-      .title {
-        font-size: 32px
-      }
-
-      .subtitle {
-        font-size: 15px
-      }
-
-      .toggle {
-        width: 100%
-      }
-
-      .toggle button {
-        flex: 1;
-        justify-content: center;
-        padding: 10px 12px;
-        font-size: 13px
-      }
-
-      .toggle button .save-pill {
-        font-size: 10px;
-        padding: 2px 6px
-      }
-
-      .save-line {
-        font-size: 12px
-      }
-
-      .accent-lines .vline {
-        display: none
-      }
-
-      canvas.particles {
-        display: none
-      }
-
-      .card {
-        padding: 22px 18px
-      }
-
-      /* Remove scale on mobile – avoids horizontal overflow */
-      .card.pop {
-        transform: none;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, .3)
-      }
-
-      .card.pop.is-anim {
-        animation-name: fadeUp
-      }
-
-      .card.pop:hover {
-        transform: none
-      }
-
-      .plan-name {
-        font-size: 20px
-      }
-
-      .price {
-        font-size: 34px
-      }
-
-      .setup {
-        font-size: 12px
-      }
-
-      .feat {
-        gap: 14px
-      }
-
-      .btn {
-        padding: 12px 16px;
-        font-size: 13px
-      }
-
-      .section-divider {
-        margin: 56px 0 0
-      }
-
-      .addons {
-        margin-top: 40px
-      }
-
-      .addons-header {
-        margin-bottom: 20px
-      }
-
-      .addons-eyebrow {
-        font-size: 11px
-      }
-
-      .addon-card {
-        padding: 20px 18px
-      }
-
-      .addon-amt {
-        font-size: 26px
-      }
-
-      .addon-name {
-        font-size: 16px
-      }
-
-      .addon-feat li {
-        font-size: 13px
-      }
-
-      .legal {
-        margin-top: 40px
-      }
-
-      .legal p {
-        font-size: 12px;
-        line-height: 1.65
-      }
-
-      .legal-footer a {
-        font-size: 13px
+    /* Custom spacing for 2-column product layout on desktop */
+    @media(min-width: 900px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        max-width: 860px !important;
       }
     }
   </style>
@@ -876,101 +24,94 @@
   <section data-locked id="root">
     <div class="vignette"></div>
     <div class="accent-lines" aria-hidden="true">
+      <div class="hline"></div>
+      <div class="hline"></div>
+      <div class="hline"></div>
+      <div class="vline"></div>
+      <div class="vline"></div>
+      <div class="vline"></div>
     </div>
     <canvas class="particles" id="particles"></canvas>
 
-    <div class="container">
-      <div class="head">
-        <p class="kicker">Plan &amp; Pricing</p>
-        <h1 class="title">Website</h1>
-        <div class="toggle-wrap">
-          <div class="toggle-group">
-            <div class="toggle" role="tablist">
-              <button id="btnMonthly" class="active" type="button">Monatlich</button>
-              <button id="btnYearly" type="button">
-                Jährlich
-                <span class="save-pill">%</span>
-              </button>
-            </div>
-            <div class="save-line" id="saveLine">&nbsp;</div>
-          </div>
+    <div class="container" style="display: flex; flex-direction: column; min-height: 100vh; justify-content: center; padding: 40px 24px;">
+      <div class="head" style="margin-bottom: 56px;">
+        <p class="kicker">Occto Digitalagentur</p>
+        <h1 class="title">Unsere Produkte</h1>
+        <p class="subtitle" style="opacity: 0; transform: translateY(8px); animation: sIn .6s ease .26s forwards;">
+          Wählen Sie die passende Lösung für Ihr Vorhaben
+        </p>
+      </div>
+
+      <div class="grid product-grid" id="grid">
+        <!-- Webseiten Teaser -->
+        <div class="card pop is-anim" style="animation-delay: 0.32s; display: flex; flex-direction: column;">
+          <h3 class="plan-name">Webseiten</h3>
+          <p class="plan-concept">Online-Auftritt &amp; Marketing</p>
+          
+          <div class="divider"></div>
+          
+          <ul class="feat" style="margin-bottom: 40px;">
+            <li>
+              <span class="check">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width: 13px; height: 13px;"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span class="value">Klassische Firmen-Websites &amp; Landingpages</span>
+            </li>
+            <li>
+              <span class="check">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width: 13px; height: 13px;"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span class="value">Mobil-optimiertes Premium-Design</span>
+            </li>
+            <li>
+              <span class="check">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width: 13px; height: 13px;"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span class="value">SEO-Grundoptimierung inklusive</span>
+            </li>
+          </ul>
+
+          <a href="./product-website/" class="btn btn-primary">
+            Preise &amp; Pakete ansehen &rarr;
+          </a>
+        </div>
+
+        <!-- Web-Apps Teaser -->
+        <div class="card pop is-anim" style="animation-delay: 0.4s; display: flex; flex-direction: column;">
+          <h3 class="plan-name">Web-Apps</h3>
+          <p class="plan-concept">Interaktivität &amp; Dynamik</p>
+          
+          <div class="divider"></div>
+          
+          <ul class="feat" style="margin-bottom: 40px;">
+            <li>
+              <span class="check">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width: 13px; height: 13px;"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span class="value">Individuelle Portale, Dashboards &amp; Plattformen</span>
+            </li>
+            <li>
+              <span class="check">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width: 13px; height: 13px;"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span class="value">Datenbankanbindung &amp; Benutzerverwaltung</span>
+            </li>
+            <li>
+              <span class="check">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width: 13px; height: 13px;"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              <span class="value">Maßgeschneiderte Geschäftslogik</span>
+            </li>
+          </ul>
+
+          <a href="./product-webapp/" class="btn btn-primary">
+            Preise &amp; Pakete ansehen &rarr;
+          </a>
         </div>
       </div>
 
-      <div class="grid" id="grid"></div>
-
-      <hr class="section-divider">
-
-      <div class="addons">
-        <div class="addons-header">
-          <span class="addons-eyebrow">Optionale Zusatz-Module</span>
-        </div>
-        <div class="addons-grid">
-          <div class="addon-card">
-            <h3 class="addon-name">Newsletter-Modul</h3>
-            <p class="addon-avail">für Starter &amp; Business</p>
-            <div class="addon-price-row">
-              <span class="addon-amt">+39 €</span>
-              <span class="addon-per">/ Monat</span>
-            </div>
-            <div class="addon-divider"></div>
-            <ul class="addon-feat">
-              <li>Anmeldeformular auf der Website</li>
-              <li>Versand-Template inklusive</li>
-              <li>Bis zu XXXX Empfänger</li>
-            </ul>
-            <button class="btn btn-ghost" type="button" onclick="window.location.href='mailto:hello@occto.com?subject=Anfrage Newsletter-Modul'">Auswählen</button>
-          </div>
-          <div class="addon-card">
-            <h3 class="addon-name">Google-Maps Review</h3>
-            <p class="addon-avail">für alle Pläne</p>
-            <div class="addon-price-row">
-              <span class="addon-amt">+29 €</span>
-              <span class="addon-per">/ Monat</span>
-            </div>
-            <div class="addon-divider"></div>
-            <ul class="addon-feat">
-              <li>Bewertungslink auf der Website eingebunden</li>
-              <li>Auswertung der Rezensionen</li>
-              <li>Stärkt lokale Sichtbarkeit</li>
-            </ul>
-            <button class="btn btn-ghost" type="button" onclick="window.location.href='mailto:hello@occto.com?subject=Anfrage Google-Maps Review'">Auswählen</button>
-          </div>
-          <div class="addon-card">
-            <h3 class="addon-name">Terminbuchung-Modul</h3>
-            <p class="addon-avail">für alle Pläne</p>
-            <div class="addon-price-row">
-              <span class="addon-amt">+39 €</span>
-              <span class="addon-per">/ Monat</span>
-            </div>
-            <div class="addon-divider"></div>
-            <ul class="addon-feat">
-              <li>Online-Buchungsformular auf der Website</li>
-              <li>Automatische Bestätigungs-E-Mail</li>
-              <li>Kalender-Integration möglich</li>
-            </ul>
-            <button class="btn btn-ghost" type="button" onclick="window.location.href='mailto:hello@occto.com?subject=Anfrage Terminbuchung-Modul'">Auswählen</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="legal">
-        <p><b>Preise:</b> Alle angegebenen Preise verstehen sich als Nettopreise zzgl. der jeweils gültigen gesetzlichen
-          Mehrwertsteuer.</p>
-        <p><b>Laufzeit & Kündigung:</b> Der Servicevertrag für die Pläne Starter und Business hat eine
-          Mindestvertragslaufzeit von 24 Monaten. Die Kündigungsfrist beträgt drei Monate zum Ende der jeweiligen
-          Vertragslaufzeit. Erfolgt keine fristgerechte Kündigung, verlängert sich der Vertrag automatisch um weitere 12
-          Monate. Die Kündigung bedarf der Textform (z.&nbsp;B. E-Mail).</p>
-
-        <p><b>Newsletter-Modul:</b> Das Newsletter-Modul ist optional zubuchbar. Für dieses Modul gilt die gleiche
-          Mindestvertragslaufzeit und Kündigungsfrist wie für den Hauptvertrag. Ein kombiniertes Kündigungsrecht wird
-          hiermit vereinbart.</p>
-        <p><b>SEO-Basic (nur Business-Plan):</b> Die Leistung „SEO-Basic" beinhaltet Dienstleistungen zur technischen
-          und inhaltlichen Optimierung der Website für die Suchmaschine Google nach gängigen Industriestandards
-          (On-Page-Optimierung). Ein bestimmtes Ranking oder eine Platzierung in den Suchergebnissen wird ausdrücklich
-          nicht geschuldet.</p>
-
-        <div class="legal-footer">
+      <div class="legal" style="margin-top: 56px;">
+        <div class="legal-footer" style="text-align: center;">
           <a href="agb.html">Allgemeine Geschäftsbedingungen (AGB) ansehen &rarr;</a>
         </div>
       </div>
@@ -978,137 +119,6 @@
   </section>
 
   <script>
-    // CHECK SVG icon
-    const ICON_CHECK = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
-
-    // Yearly = 11 × monthly  →  1 Monat gratis
-    const YEAR_MULT = 11;
-
-    const plans = [
-      {
-        id: "starter",
-        name: "Starter",
-        concept: "Onepager",
-        monthly: 97,
-        setup: "490 €",
-        features: [
-          { label: "Umfang", value: "1 Seite (Onepager)" },
-          { label: "Design", value: "Modern & Mobil-optimiert" },
-          { label: "Marketing", value: "Basis-Sichtbarkeit" },
-          { label: "Analytics", value: "Basic-Analytics" },
-          { label: "Service", value: "Technik- & Sicherheits-Updates" },
-        ],
-        cta: "Starter wählen",
-        highlighted: false,
-      },
-      {
-        id: "business",
-        name: "Business",
-        concept: "Website",
-        monthly: 147,
-        setup: "790 €",
-        features: [
-          { label: "Umfang", value: "3 – 5 Unterseiten" },
-          { label: "Design", value: "Individuelles Marken-Design" },
-          { label: "Marketing", value: "SEO Basic Paket" },
-          { label: "Analytics", value: "Advance-Analytics" },
-          { label: "Service", value: "Inhalts-Pflege (1 h / Monat)" },
-        ],
-        cta: "Business wählen",
-        highlighted: true,
-        badge: "Empfehlung",
-      },
-      {
-        id: "enterprise",
-        name: "Enterprise",
-        concept: "Marke & Brand",
-        monthly: 297,
-        setup: "ab 1.490 €",
-        features: [
-          { label: "Umfang", value: "Ab 5 Unterseiten / Portfolios" },
-          { label: "Design", value: "Exklusives Design" },
-          { label: "Marketing", value: "Newsletter-System" },
-          { label: "Analytics", value: "Advance-Analytics" },
-          { label: "Service", value: "Strategie-Gespräch (Quartal)" },
-        ],
-        cta: "Enterprise anfragen",
-      },
-    ];
-
-    let isYearly = false;
-
-    const fmtEUR = (n) => new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n);
-
-    function render() {
-      const grid = document.getElementById("grid");
-      grid.innerHTML = "";
-      plans.forEach((p, i) => {
-        const yearly = p.monthly * YEAR_MULT;
-        const price = isYearly ? yearly : p.monthly;
-        const unit = isYearly ? "/ Jahr" : "/ Monat";
-        const popClass = p.highlighted ? "pop is-anim" : "";
-        const badge = p.badge
-          ? `<div class="badge">${p.badge}</div>` : "";
-
-        const featHtml = p.features.map(f =>
-          `<li>
-             <span class="check">${ICON_CHECK}</span>
-             <span class="value">${f.value}</span>
-           </li>`
-        ).join("");
-
-        const btnClass = p.highlighted ? "btn btn-primary" : "btn btn-ghost";
-        const savingsHtml = isYearly
-          ? `<div class="savings show"><span class="savings-dot"></span>Du sparst ${fmtEUR(p.monthly)} / Jahr</div>`
-          : `<div class="savings">&nbsp;</div>`;
-
-        const html = `
-        <div class="card ${popClass}" style="animation-delay:${0.32 + i * 0.08}s">
-          ${badge}
-          <h3 class="plan-name">${p.name}</h3>
-          <p class="plan-concept">${p.concept}</p>
-
-          <div class="price-row">
-            <span class="price">${fmtEUR(price)}</span>
-            <span class="price-unit">${unit}</span>
-          </div>
-          ${savingsHtml}
-          <div class="setup">Einmalige Einrichtung: <b>${p.setup}</b></div>
-
-          <div class="divider"></div>
-
-          <ul class="feat">${featHtml}</ul>
-
-          <button class="${btnClass}" type="button" onclick="window.location.href='mailto:hello@occto.com?subject=Anfrage Paket ${p.name}'">
-            ${p.cta}
-          </button>
-        </div>`;
-        grid.insertAdjacentHTML("beforeend", html);
-      });
-
-      // Update savings line under toggle
-      const line = document.getElementById("saveLine");
-      line.innerHTML = isYearly
-        ? `Bei jährlicher Zahlung: <b>1 Monat gratis</b> in jedem Paket inklusive`
-        : `&nbsp;`;
-    }
-
-    const btnM = document.getElementById("btnMonthly");
-    const btnY = document.getElementById("btnYearly");
-    btnM.addEventListener("click", () => { isYearly = false; btnM.classList.add("active"); btnY.classList.remove("active"); render(); });
-    btnY.addEventListener("click", () => { isYearly = true; btnY.classList.add("active"); btnM.classList.remove("active"); render(); });
-
-    render();
-
-    // After entrance animation, clear it so CSS hover transform can take over
-    document.getElementById("grid").addEventListener("animationend", e => {
-      const el = e.target;
-      if (el.classList.contains("pop")) {
-        el.style.animation = "none";
-        el.style.opacity = "1";
-      }
-    });
-
     // Reveal animations
     requestAnimationFrame(() => document.getElementById("root").classList.add("is-ready"));
 
