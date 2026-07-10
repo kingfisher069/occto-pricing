@@ -27,7 +27,7 @@
     <div class="container">
       <div class="head">
         <p class="kicker">Plan &amp; Pricing</p>
-        <h1 class="title">Website</h1>
+        <h1 class="title">Web-Apps</h1>
         <div class="toggle-wrap">
           <div class="toggle-group">
             <div class="toggle" role="tablist">
@@ -133,15 +133,15 @@
       {
         id: "starter",
         name: "Starter",
-        concept: "Onepager",
-        monthly: 97,
-        setup: "490 €",
+        concept: "Web-App Basis",
+        monthly: 197,
+        setup: "2.490 €",
         features: [
-          { label: "Umfang", value: "1 Seite (Onepager)" },
-          { label: "Design", value: "Modern & Mobil-optimiert" },
-          { label: "Marketing", value: "Basis-Sichtbarkeit" },
-          { label: "Analytics", value: "Basic-Analytics" },
-          { label: "Service", value: "Technik- & Sicherheits-Updates" },
+          { label: "Umfang", value: "1 Benutzerrolle (z. B. nur der Endnutzer)" },
+          { label: "Datenbank", value: "Basis-Datenbankstruktur" },
+          { label: "Nutzer", value: "Standard-Nutzerverwaltung (Registrierung / Login)" },
+          { label: "Schnittstelle", value: "Integration von 1 externen Dienst (z. B. Stripe für Zahlungen oder ein CRM)" },
+          { label: "Service", value: "Basis-Analytics & Sicherheits-Updates" },
         ],
         cta: "Starter wählen",
         highlighted: false,
@@ -149,15 +149,15 @@
       {
         id: "business",
         name: "Business",
-        concept: "Website",
-        monthly: 147,
-        setup: "790 €",
+        concept: "Erweiterte Web-App",
+        monthly: 297,
+        setup: "4.990 €",
         features: [
-          { label: "Umfang", value: "3 – 5 Unterseiten" },
-          { label: "Design", value: "Individuelles Marken-Design" },
-          { label: "Marketing", value: "SEO Basic Paket" },
-          { label: "Analytics", value: "Advance-Analytics" },
-          { label: "Service", value: "Inhalts-Pflege (1 h / Monat)" },
+          { label: "Umfang", value: "Bis zu 3 Benutzerrollen" },
+          { label: "Datenbank", value: "Erweiterte Datenbankstruktur & Workflows" },
+          { label: "Design", value: "Individuelles UI/UX-Design (passend zur Marke)" },
+          { label: "Schnittstelle", value: "Mehrere Schnittstellen möglich" },
+          { label: "Support", value: "Erweiterte Analytics & 1 Std. monatlicher Support/Inhaltspflege" },
         ],
         cta: "Business wählen",
         highlighted: true,
@@ -166,15 +166,16 @@
       {
         id: "enterprise",
         name: "Enterprise",
-        concept: "Marke & Brand",
-        monthly: 297,
-        setup: "ab 1.490 €",
+        concept: "Custom Web-App",
+        monthly: 497,
+        setup: "ab 9.990 €",
+        prefix: "ab ",
         features: [
-          { label: "Umfang", value: "Ab 5 Unterseiten / Portfolios" },
-          { label: "Design", value: "Exklusives Design" },
-          { label: "Marketing", value: "Newsletter-System" },
-          { label: "Analytics", value: "Advance-Analytics" },
-          { label: "Service", value: "Strategie-Gespräch (Quartal)" },
+          { label: "Umfang", value: "Unbegrenzte Benutzerrollen & komplexe Berechtigungssysteme" },
+          { label: "Datenbank", value: "Performance & optimierte Datenbanken" },
+          { label: "Design", value: "Exklusives, voll-individuelles Design" },
+          { label: "Schnittstelle", value: "Komplexe API-Architekturen & native App-Anbindung (iOS/Android)" },
+          { label: "Support", value: "Bevorzugter Support (SLA) & quartalsweites Strategiegespräch" },
         ],
         cta: "Enterprise anfragen",
       },
@@ -203,8 +204,9 @@
         ).join("");
 
         const btnClass = p.highlighted ? "btn btn-primary" : "btn btn-ghost";
+        const prefix = p.prefix ? p.prefix : "";
         const savingsHtml = isYearly
-          ? `<div class="savings show"><span class="savings-dot"></span>Du sparst ${fmtEUR(p.monthly)} / Jahr</div>`
+          ? `<div class="savings show"><span class="savings-dot"></span>Du sparst ${prefix}${fmtEUR(p.monthly)} / Jahr</div>`
           : `<div class="savings">&nbsp;</div>`;
 
         const html = `
@@ -214,7 +216,7 @@
           <p class="plan-concept">${p.concept}</p>
 
           <div class="price-row">
-            <span class="price">${fmtEUR(price)}</span>
+            <span class="price">${prefix}${fmtEUR(price)}</span>
             <span class="price-unit">${unit}</span>
           </div>
           ${savingsHtml}
