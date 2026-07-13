@@ -1131,11 +1131,11 @@ canvas.particles {
 .modal-box {
   position: relative;
   width: 100%;
-  max-width: 380px;
+  max-width: 400px;
   background: var(--card-pop);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 32px 28px;
+  border-radius: 20px;
+  padding: 40px 32px 32px;
   box-shadow: var(--shadow-modal);
   animation: modalPop .22s cubic-bezier(.22, 1, .36, 1)
 }
@@ -1164,49 +1164,53 @@ canvas.particles {
 
 .modal-close {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: 20px;
+  right: 20px;
   width: 32px;
   height: 32px;
   border-radius: 9999px;
-  border: 1px solid var(--border);
+  border: none;
   background: transparent;
-  color: var(--text);
-  font-size: 18px;
-  line-height: 1;
+  color: var(--muted);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: background .2s ease
+  transition: background .2s ease, color .2s ease
+}
+
+.modal-close svg {
+  width: 16px;
+  height: 16px
 }
 
 .modal-close:hover {
-  background: rgba(var(--overlay-rgb), .06)
+  background: rgba(var(--overlay-rgb), .06);
+  color: var(--text)
 }
 
 .modal-box h3 {
-  margin: 0 0 8px;
-  font-size: 22px;
+  margin: 0 0 10px;
+  font-size: 24px;
   font-weight: 700;
   letter-spacing: -.01em
 }
 
 .modal-sub {
-  margin: 0 0 24px;
+  margin: 0 0 28px;
   color: var(--muted);
-  font-size: 14px
+  font-size: 14px;
+  line-height: 1.5
 }
 
 .modal-contact {
-  background: rgba(var(--overlay-rgb), .04);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 18px 20px
+  background: rgba(var(--overlay-rgb), .035);
+  border-radius: 16px;
+  padding: 22px 22px
 }
 
 .modal-name {
-  margin: 0 0 12px;
+  margin: 0 0 16px;
   font-size: 16px;
   font-weight: 600
 }
@@ -1215,12 +1219,12 @@ canvas.particles {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  font-size: 14px
+  gap: 4px;
+  font-size: 15px
 }
 
 .modal-line+.modal-line {
-  margin-top: 12px
+  margin-top: 16px
 }
 
 .modal-line span {
@@ -1240,7 +1244,7 @@ canvas.particles {
 
 @media(max-width:480px) {
   .modal-box {
-    padding: 26px 20px
+    padding: 36px 24px 28px
   }
 }
 
