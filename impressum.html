@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8" />
+  <script>
+    if (localStorage.getItem('occto-theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Impressum – Occto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared-assets/style.css">
+  <style>
+    .legal-page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 24px 24px 80px
+    }
+
+    .legal-page h1 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      margin: 0 0 32px
+    }
+
+    .legal-page .section {
+      margin-bottom: 40px
+    }
+
+    .legal-page h2 {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -.01em;
+      margin: 0 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .legal-page p {
+      font-size: 16px;
+      line-height: 24px;
+      color: rgba(24, 1, 2, 0.4);
+      margin: 0 0 14px
+    }
+
+    [data-theme="dark"] .legal-page p {
+      color: var(--muted-dim)
+    }
+
+    .legal-page a {
+      color: var(--text)
+    }
+  </style>
+</head>
+
+<body>
+  <div class="vignette"></div>
+
+  <header class="site-nav">
+    <a href="index.html" aria-label="Occto Startseite">
+      <img class="site-nav-logo logo-light" src="shared-assets/occto-logo-black.svg" alt="Occto" />
+      <img class="site-nav-logo logo-dark" src="shared-assets/occto-logo-white.svg" alt="Occto" />
+    </a>
+    <button class="nav-burger" type="button" onclick="toggleMobileNav()" aria-label="Menü öffnen">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" /></svg>
+    </button>
+    <nav class="site-nav-links" id="navLinks">
+      <a href="index.html" class="nav-link">Preise</a>
+      <a href="product-website/" class="nav-link">Website</a>
+      <a href="product-webapp/" class="nav-link">Web-Apps</a>
+      <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Theme wechseln">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" /></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" /></svg>
+      </button>
+      <button class="nav-cta" type="button" onclick="openContactModal()">Frag uns</button>
+    </nav>
+  </header>
+
+  <div class="legal-page">
+    <h1>Impressum</h1>
+
+    <div class="section">
+      <h2>Angaben gemäß § 5 TMG</h2>
+      <p>Wesley Lopes Barbosa Oliveira<br />
+        Mühlgasse 31<br />
+        60486 Frankfurt am Main<br />
+        Deutschland</p>
+    </div>
+
+    <div class="section">
+      <h2>Kontakt</h2>
+      <p>E-Mail: <a href="mailto:wesley@occto.io">wesley@occto.io</a><br />
+        Telefon: <a href="tel:+4917642772208">+49 176 42772208</a></p>
+    </div>
+
+    <div class="section">
+      <h2>Steuerliche Angaben</h2>
+      <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: wird nachgereicht, sobald vorliegend.</p>
+      <p>Steuernummer: 01484304744</p>
+    </div>
+
+    <div class="section">
+      <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+      <p>Wesley Lopes Barbosa Oliveira<br />
+        Anschrift wie oben.</p>
+    </div>
+
+    <div class="section">
+      <h2>Streitschlichtung</h2>
+      <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+        <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a>.
+        Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
+        teilzunehmen.</p>
+    </div>
+
+    <div class="section">
+      <h2>Haftung für Inhalte</h2>
+      <p>Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen
+        Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet,
+        übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine
+        rechtswidrige Tätigkeit hinweisen.</p>
+    </div>
+
+    <div class="section">
+      <h2>Haftung für Links</h2>
+      <p>Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben.
+        Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten
+        Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p class="footer-copy">&copy; 2026 Occto</p>
+    <nav class="footer-links">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="agb.html">AGB</a>
+      <button type="button" onclick="openContactModal()">Kontakt</button>
+    </nav>
+  </footer>
+
+  <div class="modal-overlay" id="contactModal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" type="button" aria-label="Schließen">&times;</button>
+      <h3 id="modalTitle">Jetzt anfragen</h3>
+      <p class="modal-sub">Wir freuen uns auf Ihre Nachricht:</p>
+      <div class="modal-contact">
+        <p class="modal-name">Wesley Oliveira</p>
+        <p class="modal-line"><span>Tel. oder WhatsApp:</span><a href="tel:+4917642772208">+49 176 42772208</a></p>
+        <p class="modal-line"><span>E-Mail:</span><a href="mailto:wesley@occto.io">wesley@occto.io</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const contactModal = document.getElementById("contactModal");
+    const modalClose = document.getElementById("modalClose");
+    function openContactModal() {
+      contactModal.hidden = false;
+    }
+    function closeContactModal() {
+      contactModal.hidden = true;
+    }
+    modalClose.addEventListener("click", closeContactModal);
+    contactModal.addEventListener("click", e => {
+      if (e.target === contactModal) closeContactModal();
+    });
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && !contactModal.hidden) closeContactModal();
+    });
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      if (html.getAttribute("data-theme") === "dark") {
+        html.removeAttribute("data-theme");
+        localStorage.setItem("occto-theme", "light");
+      } else {
+        html.setAttribute("data-theme", "dark");
+        localStorage.setItem("occto-theme", "dark");
+      }
+    }
+
+    // Mobile nav
+    function toggleMobileNav() {
+      document.getElementById("navLinks").classList.toggle("is-open");
+    }
+    document.addEventListener("click", e => {
+      const nav = document.getElementById("navLinks");
+      const burger = document.querySelector(".nav-burger");
+      if (nav.classList.contains("is-open") && !nav.contains(e.target) && !burger.contains(e.target)) {
+        nav.classList.remove("is-open");
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8" />
+  <script>
+    if (localStorage.getItem('occto-theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datenschutz – Occto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared-assets/style.css">
+  <style>
+    .legal-page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 24px 24px 80px
+    }
+
+    .legal-page h1 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      margin: 0 0 32px
+    }
+
+    .legal-page .section {
+      margin-bottom: 40px
+    }
+
+    .legal-page h2 {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -.01em;
+      margin: 0 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .legal-page p {
+      font-size: 16px;
+      line-height: 24px;
+      color: rgba(24, 1, 2, 0.4);
+      margin: 0 0 14px
+    }
+
+    [data-theme="dark"] .legal-page p {
+      color: var(--muted-dim)
+    }
+
+    .legal-page ul {
+      margin: 0 0 14px;
+      padding-left: 20px
+    }
+
+    .legal-page li {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--muted-dim);
+      margin-bottom: 6px
+    }
+
+    .legal-page a {
+      color: var(--text)
+    }
+  </style>
+</head>
+
+<body>
+  <div class="vignette"></div>
+
+  <header class="site-nav">
+    <a href="index.html" aria-label="Occto Startseite">
+      <img class="site-nav-logo logo-light" src="shared-assets/occto-logo-black.svg" alt="Occto" />
+      <img class="site-nav-logo logo-dark" src="shared-assets/occto-logo-white.svg" alt="Occto" />
+    </a>
+    <button class="nav-burger" type="button" onclick="toggleMobileNav()" aria-label="Menü öffnen">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" /></svg>
+    </button>
+    <nav class="site-nav-links" id="navLinks">
+      <a href="index.html" class="nav-link">Preise</a>
+      <a href="product-website/" class="nav-link">Website</a>
+      <a href="product-webapp/" class="nav-link">Web-Apps</a>
+      <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Theme wechseln">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" /></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" /></svg>
+      </button>
+      <button class="nav-cta" type="button" onclick="openContactModal()">Frag uns</button>
+    </nav>
+  </header>
+
+  <div class="legal-page">
+    <h1>Datenschutzerklärung</h1>
+
+    <div class="section">
+      <h2>1. Verantwortlicher</h2>
+      <p>Wesley Lopes Barbosa Oliveira, Mühlgasse 31, 60486 Frankfurt am Main. Kontakt:
+        <a href="mailto:wesley@occto.io">wesley@occto.io</a>. Vollständige Anschrift siehe
+        <a href="impressum.html">Impressum</a>.</p>
+    </div>
+
+    <div class="section">
+      <h2>2. Allgemeines</h2>
+      <p>Wir verarbeiten personenbezogene Daten nur, wenn dies gesetzlich erlaubt ist oder Du ausdrücklich eingewilligt
+        hast. Diese Erklärung beschreibt, welche Daten wir erheben, zu welchem Zweck, auf welcher Rechtsgrundlage und
+        wie lange wir sie speichern. Deine Wahl zu optionalen Cookies kannst Du jederzeit über den Cookie-Banner
+        anpassen.</p>
+    </div>
+
+    <div class="section">
+      <h2>3. Hosting (Cloudflare Pages)</h2>
+      <p>Diese Webseite wird über Cloudflare Pages (Cloudflare, Inc., USA) ausgeliefert. Cloudflare verarbeitet dabei
+        IP-Adresse, Datum, Uhrzeit, Browser-Typ und aufgerufene Seiten als Server-Logfiles. Anfragen werden bevorzugt
+        aus Rechenzentren innerhalb der EU ausgeliefert.</p>
+      <p>Es besteht ein Auftragsverarbeitungsvertrag (Data Processing Addendum), die Übermittlung in die USA ist durch
+        EU-Standardvertragsklauseln (SCCs) abgesichert. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes
+        Interesse an einem stabilen und sicheren Betrieb).</p>
+    </div>
+
+    <div class="section">
+      <h2>4. Plausible Analytics</h2>
+      <p>Sobald aktiviert, nutzen wir Plausible Analytics (gehostet in der EU). Plausible arbeitet ohne Cookies,
+        anonymisiert IP-Adressen, erstellt keine Profile und teilt keine Daten mit Dritten. Erfasst werden
+        ausschließlich aggregierte Besucherzahlen, Verweisquellen und Geräteklassen.</p>
+      <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO. Du kannst der Erfassung jederzeit widersprechen, indem Du
+        Tracking-Schutz in Deinem Browser aktivierst.</p>
+    </div>
+
+    <div class="section">
+      <h2>5. Kontaktformular (Supabase)</h2>
+      <p>Wenn Du uns über das Kontaktformular eine Nachricht schickst, speichern wir Deine Angaben (E-Mail, optional
+        Name, Telefon, Unternehmen, Nachricht) in unserer Datenbank bei Supabase. Speicherort: Frankfurt am Main, EU.
+        Wir nutzen diese Daten ausschließlich, um Deine Anfrage zu beantworten.</p>
+      <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) und lit. f DSGVO (berechtigtes Interesse an
+        Bearbeitung Deiner Anfrage). Speicherdauer: bis zur abschließenden Bearbeitung Deiner Anfrage, längstens jedoch
+        12 Monate, sofern keine Geschäftsbeziehung entsteht.</p>
+    </div>
+
+    <div class="section">
+      <h2>6. Newsletter (Resend, mit Tracking)</h2>
+      <p>Wenn Du Dich für unseren Newsletter anmeldest, gehen wir nach dem Double-Opt-In-Verfahren vor: Du erhältst
+        zunächst eine Bestätigungsmail mit einem Link, erst nach Klick auf den Link wird Deine Anmeldung aktiv.
+        Versendet werden die Mails über Resend Inc. (Delaware, USA), abgesichert durch EU-Standardvertragsklauseln und
+        Auftragsverarbeitungsvertrag.</p>
+      <p>Tracking: Wir messen, ob Empfänger eine Mail öffnen (Tracking-Pixel) und ob enthaltene Links angeklickt werden
+        (Redirect-Links). Dies hilft uns, die Relevanz unserer Inhalte einzuschätzen. Erfasst werden Zeitpunkt des
+        Öffnens, Klicks auf Links sowie technische Metadaten (User-Agent, IP). Speicherort: Supabase (Frankfurt, EU) in
+        der Tabelle newsletter_events.</p>
+      <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Deine Einwilligung beim Anmeldeprozess) und Art. 6 Abs. 1 lit. f
+        DSGVO (berechtigtes Interesse an Reichweitenmessung).</p>
+      <p>Widerruf: In jeder Newsletter-Mail findest Du einen Abmelde-Link. Ein Klick reicht — wir speichern Dein Datum
+        der Abmeldung und anonymisieren Deinen Eintrag anschließend, soweit keine gesetzlichen Aufbewahrungsfristen
+        entgegenstehen.</p>
+    </div>
+
+    <div class="section">
+      <h2>7. Transaktionale E-Mails (Resend)</h2>
+      <p>Für transaktionale E-Mails (Bestätigung von Kontaktanfragen, Vertragsversand, Rechnungen) nutzen wir ebenfalls
+        Resend. Es besteht ein Auftragsverarbeitungsvertrag, EU-Standardvertragsklauseln sind vereinbart.
+        Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO.</p>
+    </div>
+
+    <div class="section">
+      <h2>8. Vertragsabschluss und elektronische Signatur</h2>
+      <p>Wenn Du ein Angebot über unsere Kunden-Pages elektronisch signierst, speichern wir Deinen Namen, Deine
+        E-Mail-Adresse, das Signaturbild, IP-Adresse, User-Agent sowie Datum und Uhrzeit der Signatur. Diese
+        Beweismittel werden in einem PDF-Dokument zusammengefasst und in Supabase Storage (Frankfurt, EU) abgelegt.</p>
+      <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung) und lit. c DSGVO (gesetzliche
+        Aufbewahrungspflicht).</p>
+      <p>Aufbewahrungsdauer: 10 Jahre gemäß § 257 HGB / § 147 AO und GoBD-Vorgaben.</p>
+    </div>
+
+    <div class="section">
+      <h2>9. Activity-Log</h2>
+      <p>Im Hintergrund führen wir ein internes Audit-Protokoll (Activity-Log) über sicherheitsrelevante Aktionen:
+        Lead-Eingang, Statusänderungen, Vertragsereignisse, Newsletter-Versand. Erfasst werden Zeitpunkt, Aktionstyp,
+        betroffene Entität, IP und User-Agent.</p>
+      <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an Nachvollziehbarkeit, Sicherheit und
+        Compliance). Speicherdauer: 12 Monate für allgemeine Vorgänge, 10 Jahre für vertragsrelevante Ereignisse (siehe
+        Punkt 8).</p>
+    </div>
+
+    <div class="section">
+      <h2>10. Magic-Link-Authentifizierung (Admin)</h2>
+      <p>Der Admin-Bereich (admin.occto.io) ist ausschließlich für Wesley und Giuliano zugänglich und nutzt Supabase
+        Auth mit Magic-Link-Verfahren. Es werden keine Passwörter gespeichert; stattdessen wird ein Einmal-Token per
+        Mail versandt. Diese Sektion betrifft Dich als Webseitenbesucher nicht direkt, wird aber aus
+        Transparenzgründen aufgeführt.</p>
+    </div>
+
+    <div class="section">
+      <h2>11. Cookies</h2>
+      <p>Wir setzen ausschließlich technisch notwendige Cookies, die für den Betrieb der Seite unverzichtbar sind (z.
+        B. Session, Cookie-Consent-Status). Optionale Cookies werden erst nach Deiner ausdrücklichen Einwilligung über
+        den Cookie-Banner geladen. Deine Wahl speichern wir lokal in Deinem Browser.</p>
+    </div>
+
+    <div class="section">
+      <h2>12. Deine Rechte</h2>
+      <ul>
+        <li>Auskunft über Deine gespeicherten Daten (Art. 15 DSGVO)</li>
+        <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
+        <li>Löschung Deiner Daten (Art. 17 DSGVO)</li>
+        <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+        <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+        <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
+        <li>Widerruf erteilter Einwilligungen mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO)</li>
+        <li>Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO)</li>
+      </ul>
+      <p>Zuständige Aufsichtsbehörde für Occto ist der Hessische Beauftragte für Datenschutz und Informationsfreiheit,
+        Postfach 3163, 65021 Wiesbaden.</p>
+    </div>
+
+    <div class="section">
+      <h2>13. Speicherdauer im Überblick</h2>
+      <ul>
+        <li>Server-Logfiles (Cloudflare): bis zu 30 Tage</li>
+        <li>Lead-Anfragen aus Kontaktformular: bis zu 12 Monate</li>
+        <li>Newsletter-Subscribers: bis zur Abmeldung, danach Anonymisierung</li>
+        <li>Newsletter-Tracking-Events: bis zur Abmeldung</li>
+        <li>Verträge, Signaturen, Rechnungen: 10 Jahre (§ 257 HGB, GoBD)</li>
+        <li>Activity-Log: 12 Monate, vertragsrelevante Einträge 10 Jahre</li>
+      </ul>
+      <p>Stand: Juni 2026.</p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p class="footer-copy">&copy; 2026 Occto</p>
+    <nav class="footer-links">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="agb.html">AGB</a>
+      <button type="button" onclick="openContactModal()">Kontakt</button>
+    </nav>
+  </footer>
+
+  <div class="modal-overlay" id="contactModal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" type="button" aria-label="Schließen">&times;</button>
+      <h3 id="modalTitle">Jetzt anfragen</h3>
+      <p class="modal-sub">Wir freuen uns auf Ihre Nachricht:</p>
+      <div class="modal-contact">
+        <p class="modal-name">Wesley Oliveira</p>
+        <p class="modal-line"><span>Tel. oder WhatsApp:</span><a href="tel:+4917642772208">+49 176 42772208</a></p>
+        <p class="modal-line"><span>E-Mail:</span><a href="mailto:wesley@occto.io">wesley@occto.io</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const contactModal = document.getElementById("contactModal");
+    const modalClose = document.getElementById("modalClose");
+    function openContactModal() {
+      contactModal.hidden = false;
+    }
+    function closeContactModal() {
+      contactModal.hidden = true;
+    }
+    modalClose.addEventListener("click", closeContactModal);
+    contactModal.addEventListener("click", e => {
+      if (e.target === contactModal) closeContactModal();
+    });
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && !contactModal.hidden) closeContactModal();
+    });
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      if (html.getAttribute("data-theme") === "dark") {
+        html.removeAttribute("data-theme");
+        localStorage.setItem("occto-theme", "light");
+      } else {
+        html.setAttribute("data-theme", "dark");
+        localStorage.setItem("occto-theme", "dark");
+      }
+    }
+
+    // Mobile nav
+    function toggleMobileNav() {
+      document.getElementById("navLinks").classList.toggle("is-open");
+    }
+    document.addEventListener("click", e => {
+      const nav = document.getElementById("navLinks");
+      const burger = document.querySelector(".nav-burger");
+      if (nav.classList.contains("is-open") && !nav.contains(e.target) && !burger.contains(e.target)) {
+        nav.classList.remove("is-open");
+      }
+    });
+  </script>
+</body>
+
+</html>
