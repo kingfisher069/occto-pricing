@@ -7,7 +7,7 @@
     if (localStorage.getItem('occto-theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Occto – Pricing</title>
+  <title>Occto – Pricing für Tanzschulen</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -103,6 +103,65 @@
       .modal-box h3 { font-size: 26px; }
       .modal-line { font-size: 17px; }
     }
+    /* Tanzschulen: zwei Pakete nebeneinander */
+    .dance-head .title { max-width: 760px; margin-left: auto; margin-right: auto; }
+    .dance-head .title .accent { color: #972738; }
+    [data-theme="dark"] .dance-head .title .accent { color: #e0607a; }
+    .dance-head .subtitle { max-width: 560px; margin: -12px auto 36px; font-size: 17px; }
+    .grid.grid-duo {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: var(--page-w);
+      margin: 0 auto;
+    }
+    @media (min-width: 760px) {
+      .grid.grid-duo { grid-template-columns: 1fr 1fr; align-items: stretch; }
+    }
+    @media (min-width: 1020px) {
+      .grid.grid-duo { grid-template-columns: repeat(3, 1fr); }
+    }
+    .grid.grid-duo .card { padding: 28px 24px 24px; }
+    .grid.grid-duo .card.pop { transform: none; }
+    .grid.grid-duo .card.pop.is-anim { animation-name: fadeUp; }
+    .grid.grid-duo .card.pop:hover { transform: translateY(-2px); }
+    .grid.grid-duo .badge { top: 20px; right: 20px; }
+    .grid.grid-duo .feat { flex: 1; }
+    .plan-kicker {
+      margin: 0 0 6px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted-soft);
+    }
+    .grid.grid-duo .plan-name { margin-bottom: 8px; }
+    .plan-desc {
+      margin: 0 0 20px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--muted);
+      min-height: 42px;
+    }
+    @media (max-width: 640px) {
+      .dance-head .title { font-size: clamp(30px, 8.5vw, 40px); }
+      .dance-head .subtitle { font-size: 15px; margin-top: -4px; }
+      .grid.grid-duo .card { padding: 24px 18px 20px; }
+      .grid.grid-duo .badge { top: 16px; right: 16px; }
+    }
+    .setup { position: relative; margin-top: 18px; }
+    .save-tag {
+      position: absolute;
+      top: -11px;
+      right: 12px;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      background: #972738;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: .02em;
+    }
     .old-price { text-decoration: line-through; opacity: .55; margin-right: 6px; }
     @media (max-width: 480px) {
       .deal { padding: 18px 16px 14px; }
@@ -145,6 +204,175 @@
       .grid.grid-single .plan-name { padding-right: 0; margin-top: 28px; }
       .section-divider { margin-top: 48px; }
     }
+
+    /* ── Clean layout ─────────────────────────────── */
+    :root { --page-w: 1120px; }
+    .head.dance-head { max-width: var(--page-w); }
+    .dance-head .title { margin-bottom: 20px; }
+    .dance-head .subtitle { margin: 0 auto 48px; font-size: 17px; color: var(--muted); }
+
+    /* Angebot als schlanke Leiste */
+    .deal {
+      max-width: var(--page-w);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 24px;
+      margin-bottom: 40px;
+      border-radius: 14px;
+      box-shadow: none;
+      text-align: left;
+    }
+    .deal-amount { font-size: 22px; }
+    .deal-text { margin-top: 4px; font-size: 14px; text-wrap: pretty; }
+    .countdown { margin: 0; padding: 0; border: 0; flex-shrink: 0; }
+    .countdown div { min-width: 52px; }
+    .countdown b { font-size: 20px; }
+    .countdown span { font-size: 9px; margin-top: 4px; }
+
+    .offer-head .toggle-wrap { max-width: 360px; }
+    .offer-head .toggle.toggle-segmented button { padding: 8px 16px; font-size: 14px; }
+    .offer-head { margin-bottom: 32px; }
+
+    /* Karten ruhiger */
+    .grid.grid-duo { gap: 20px; }
+    .grid.grid-duo .card { padding: 32px 28px 28px; border-radius: 18px; box-shadow: none; }
+    .grid.grid-duo .plan-name { font-size: 22px; margin: 0 0 6px; }
+    .plan-desc { font-size: 14px; margin-bottom: 24px; }
+    .grid.grid-duo .price { font-size: 44px; }
+    .setup-line {
+      margin: 10px 0 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .setup-line .old-price { margin: 0 0 0 4px; opacity: .7; }
+    .grid.grid-duo .divider { margin: 24px 0; }
+    .grid.grid-duo .feat li { font-size: 14px; }
+    .grid.grid-duo .btn { margin-top: 12px; }
+
+    /* Upgrade: Rahmen und Breite */
+    .upgrade {
+      max-width: var(--page-w);
+      margin: 20px auto 0;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+    }
+
+    @media (max-width: 640px) {
+      .deal { flex-direction: column; align-items: stretch; text-align: center; gap: 16px; padding: 18px 16px; margin-bottom: 28px; }
+      .countdown { justify-content: center; padding-top: 14px; border-top: 1px solid var(--border); }
+      .dance-head .subtitle { margin-bottom: 32px; font-size: 15px; }
+      .offer-head .toggle-wrap { max-width: none; }
+      .grid.grid-duo .card { padding: 26px 20px 22px; }
+      .grid.grid-duo .badge { top: 26px; right: 20px; }
+    }
+
+    /* Website Upgrade: eine ruhige Zeile mit Info, Leistungen und Preis */
+    .upgrade {
+      display: grid;
+      grid-template-columns: 1.2fr 1.3fr auto;
+      align-items: center;
+      gap: 40px;
+      padding: 28px 32px;
+      background: transparent;
+    }
+    .upgrade-kicker {
+      margin: 0 0 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #972738;
+    }
+    [data-theme="dark"] .upgrade-kicker { color: #e0607a; }
+    .upgrade h3 { margin: 0 0 6px; font-size: 20px; letter-spacing: -.01em; }
+    .upgrade-desc { margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
+    .upgrade-list {
+      list-style: none;
+      margin: 0;
+      padding: 0 0 0 40px;
+      border-left: 1px solid var(--border);
+      display: grid;
+      gap: 10px;
+    }
+    .upgrade-list li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 14px;
+      line-height: 1.4;
+      color: var(--text-soft);
+    }
+    .upgrade-list li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: .55em;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #972738;
+    }
+    .upgrade-cta { text-align: right; }
+    .upgrade-price { margin: 0 0 12px; white-space: nowrap; }
+    .upgrade-price b { font-size: 32px; font-weight: 700; letter-spacing: -.02em; }
+    .upgrade-price span { margin-left: 4px; font-size: 13px; color: var(--muted); }
+    .upgrade-cta .btn { width: auto; padding-left: 28px; padding-right: 28px; }
+
+    @media (max-width: 900px) {
+      .upgrade { grid-template-columns: 1fr; gap: 20px; padding: 24px 20px; }
+      .upgrade-list { padding: 20px 0 0; border-left: 0; border-top: 1px solid var(--border); }
+      .upgrade-cta { display: flex; align-items: center; justify-content: space-between; text-align: left; }
+      .upgrade-price { margin: 0; }
+    }
+
+    /* Angebotsleiste: Text links, Countdown als Kacheln rechts */
+    .deal {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 28px 32px;
+      gap: 32px;
+    }
+    .deal-label {
+      margin: 0 0 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .deal-amount { font-size: 30px; line-height: 1.1; letter-spacing: -.02em; }
+    .deal-text { margin-top: 8px; font-size: 14px; }
+    .countdown-wrap { flex-shrink: 0; }
+    .countdown-label {
+      margin: 0 0 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted-soft);
+      text-align: center;
+    }
+    .deal .countdown { display: flex; gap: 8px; margin: 0; padding: 0; border: 0; }
+    .deal .countdown div {
+      flex: none;
+      width: 68px;
+      padding: 12px 0 10px;
+      border: 0;
+      border-radius: 12px;
+      background: rgba(var(--overlay-rgb), .05);
+      text-align: center;
+    }
+    .deal .countdown div + div { border-left: 0; }
+    .deal .countdown b { font-size: 28px; font-weight: 700; line-height: 1; letter-spacing: -.02em; }
+    .deal .countdown span { margin-top: 6px; font-size: 10px; letter-spacing: .1em; }
+    @media (max-width: 640px) {
+      .deal { padding: 22px 18px; gap: 20px; }
+      .deal-amount { font-size: 26px; }
+      .countdown-wrap { padding-top: 18px; border-top: 1px solid var(--border); }
+      .deal .countdown { justify-content: center; padding-top: 0; border-top: 0; }
+      .deal .countdown div { width: 62px; }
+      .deal .countdown b { font-size: 24px; }
+    }
+
   </style>
   <style>
     .legal-footer {
@@ -174,7 +402,7 @@
       <nav class="site-nav-links" id="navLinks">
         <a href="../index.html" class="nav-link">Preise</a>
         <a href="../product-website/" class="nav-link">Website</a>
-        <a href="../product-webapp/" class="nav-link is-active">Web-Apps</a>
+        <a href="../product-webapp/" class="nav-link">Web-Apps</a>
         <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Theme wechseln">
           <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" /></svg>
           <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" /></svg>
@@ -184,17 +412,24 @@
     </header>
 
     <div class="container">
-      <div class="head offer-head">
-        <p class="kicker" id="offerKicker">Plan &amp; Pricing</p>
-        <h1 class="title">Web-Apps</h1>
+      <div class="head offer-head dance-head">
+        <p class="kicker" id="offerKicker">Occto für Tanzschulen</p>
+        <h1 class="title">Wir digitalisieren <span class="accent">deine Tanzschule.</span></h1>
+        <p class="subtitle">Buchungen, Mitglieder und deine eigene App an einem Ort. Ohne Technikstress, wir kümmern uns um alles.</p>
         <div class="deal">
-          <div class="deal-amount" id="dealAmount">&nbsp;</div>
-          <p class="deal-text" id="offerSub">&nbsp;</p>
-          <div class="countdown" id="countdown">
+          <div>
+            <p class="deal-label">Angebot der Woche</p>
+            <div class="deal-amount" id="dealAmount">&nbsp;</div>
+            <p class="deal-text" id="offerSub">&nbsp;</p>
+          </div>
+          <div class="countdown-wrap">
+            <p class="countdown-label">Angebot endet in</p>
+            <div class="countdown" id="countdown">
             <div><b id="cdD">0</b><span>Tage</span></div>
             <div><b id="cdH">00</b><span>Std</span></div>
             <div><b id="cdM">00</b><span>Min</span></div>
             <div><b id="cdS">00</b><span>Sek</span></div>
+            </div>
           </div>
         </div>
         <div class="toggle-wrap">
@@ -206,14 +441,31 @@
         </div>
       </div>
 
-      <div class="grid grid-single" id="grid"></div>
+      <div class="grid grid-duo" id="grid"></div>
+
+      <div class="upgrade">
+        <div class="upgrade-info">
+          <p class="upgrade-kicker">Optional</p>
+          <h3>Website Upgrade</h3>
+          <p class="upgrade-desc">Nur wenn du wirklich eine komplett neue Website brauchst.</p>
+        </div>
+        <ul class="upgrade-list">
+          <li>Komplette Website statt Landingpage</li>
+          <li>Mehrere Unterseiten, z.&nbsp;B. Kurse, Team, Preise</li>
+          <li>Design passend zu deiner App</li>
+        </ul>
+        <div class="upgrade-cta">
+          <p class="upgrade-price"><b>+59&nbsp;€</b><span>/ Monat</span></p>
+          <button class="btn btn-ghost" type="button" onclick="openContactModal('das Website Upgrade')">Anfragen</button>
+        </div>
+      </div>
 
       <hr class="section-divider">
 
       <div class="legal">
         <p><b>Preise:</b> Alle angegebenen Preise verstehen sich als Nettopreise zzgl. der jeweils gültigen gesetzlichen
           Mehrwertsteuer.</p>
-        <p><b>Angebot:</b> Der Rabatt von 100&nbsp;€ gilt ausschließlich bei einmaliger Zahlung der Einrichtungsgebühr
+        <p><b>Angebot:</b> Der Rabatt von 100&nbsp;€ gilt für die Pakete Starter und Business, ausschließlich bei einmaliger Zahlung der Einrichtungsgebühr
           und bei Vertragsunterzeichnung innerhalb der angegebenen Frist. Bei Ratenzahlung der Einrichtung ist der Rabatt
           ausgeschlossen. Eine Kombination mit anderen Rabatten ist nicht möglich.</p>
         <p><b>Laufzeit & Kündigung:</b> Der Servicevertrag hat eine
@@ -263,26 +515,63 @@
 
     const plans = [
       {
+        id: "starter",
+        name: "Starter",
+        desc: "Für kleine Schulen, die endlich Ordnung in Buchungen und Mitglieder bringen wollen.",
+        monthly: 129,
+        setupAmount: 590,
+        features: [
+          "Schüler-App mit Buchung, Credits, Warteliste, Level und Punkten",
+          "Lehrer-App",
+          "Admin mit Übersicht, Schülern und Stundenplan",
+          "Zahlungen über Mollie",
+          "Dein Logo, deine Farben, dein Name",
+          "Standard-Mails für Warteliste und Abo",
+        ],
+        cta: "Starter anfragen",
+        highlighted: false,
+      },
+      {
         id: "business",
-        name: "Deine Web-App",
+        name: "Business",
+        desc: "App, Automationen und Marketing. Alles, damit deine Schule wächst.",
         monthly: 190,
         setupAmount: 1540,
         features: [
-          "3 Benutzerrollen",
-          "Datenbankstruktur",
-          "Nutzerverwaltung",
-          "Integration von 1 externen Dienst (z. B. Stripe für Zahlungen oder ein CRM)",
-          "Basis-Analytics",
-          "Einbindung deines CD (Logo & Farbe)",
-          "Direkter Support",
+          "Alles aus Starter",
+          "Automatische Rechnungen in Lexware Office",
+          "Alle Automations-Mails für Mitglieder und dich",
+          "Kontakte, Marketing-Zahlen und Kampagnen-Mails",
+          "Freunde werben mit Belohnungsstufen",
+          "Übernahme deiner Stammdaten",
+          "Eigene Schrift und eigene Adresse",
+          "Einweisung für dein Team",
+        ],
+        cta: "Business anfragen",
+        highlighted: true,
+        badge: "Empfehlung",
+      },
+      {
+        id: "enterprise",
+        name: "Enterprise",
+        desc: "Für Schulen, die gezielt und planbar neue Schüler gewinnen wollen.",
+        monthly: 290,
+        custom: true,
+        features: [
+          "Alles aus Business",
+          "Conversionstarke Landingpages",
+          "Mehrere Standorte in einem System",
+          "Persönlicher Ansprechpartner",
+          "Priorisierter Support",
+          "Monatliches Strategiegespräch",
         ],
         cta: "Jetzt anfragen",
-        highlighted: true,
+        highlighted: false,
       },
     ];
 
     // Angebotsfrist: verlängert sich automatisch jede Woche bis Sonntag 23:59 (ab OFFER_FIRST_END).
-    // Pro Kunde feste Frist per URL möglich, z. B. product-webapp/?bis=2026-10-15 (läuft dann regulär ab).
+    // Pro Kunde feste Frist per URL möglich, z. B. tanzschulen-pricing/?bis=2026-10-15 (läuft dann regulär ab).
     const OFFER_FIRST_END = "2026-10-04";
     const OFFER_DISCOUNT = 100;
     const fixedEndParam = (() => {
@@ -305,9 +594,8 @@
     let setupMode = "separate";
 
     const fmtEUR = (n) => new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n);
-    // Ratenzahlung: feste Einrichtung von INSTALLMENT_SETUP auf die Mindestlaufzeit verteilt (1.440 € / 24 = 60 €)
-    const INSTALLMENT_SETUP = 1440;
-    const monthlyWithSetup = (p) => p.monthly + Math.round(INSTALLMENT_SETUP / SETUP_INSTALLMENT_MONTHS);
+    // Ratenzahlung: Einrichtung (Angebotspreis) auf die Mindestlaufzeit verteilt, z. B. 1.440 € / 24 = 60 €
+    const monthlyWithSetup = (p) => p.monthly + Math.round((p.setupAmount - OFFER_DISCOUNT) / SETUP_INSTALLMENT_MONTHS);
 
     function render() {
       const grid = document.getElementById("grid");
@@ -321,10 +609,13 @@
            </li>`
         ).join("");
 
-        const discounted = active && setupMode === "separate";
+        const discounted = active && setupMode === "separate" && !p.custom;
         const setup = discounted ? p.setupAmount - OFFER_DISCOUNT : p.setupAmount;
         let price, setupHtml;
-        if (setupMode === "included") {
+        if (p.custom) {
+          price = p.monthly;
+          setupHtml = `<p class="setup-line">Einrichtung nach Absprache</p>`;
+        } else if (setupMode === "included") {
           price = monthlyWithSetup(p);
           setupHtml = `<p class="setup-line">Einrichtung in ${SETUP_INSTALLMENT_MONTHS} Raten enthalten</p>`;
         } else {
@@ -332,15 +623,15 @@
           const old = discounted ? `<span class="old-price">statt ${fmtEUR(p.setupAmount)}</span>` : "";
           setupHtml = `<p class="setup-line">+ ${fmtEUR(setup)} einmalige Einrichtung ${old}</p>`;
         }
-        const badge = "";
-
+        const badge = p.badge ? `<div class="badge"><span class="dot"></span>${p.badge}</div>` : "";
         const html = `
-        <div class="card pop is-anim" style="animation-delay:${0.32 + i * 0.08}s">
+        <div class="card ${p.highlighted ? "pop is-anim" : ""}" style="animation-delay:${0.32 + i * 0.08}s">
           ${badge}
           <h3 class="plan-name">${p.name}</h3>
+          <p class="plan-desc">${p.desc}</p>
 
           <div class="price-row">
-            <span class="price">${fmtEUR(price)}</span>
+            <span class="price">${p.custom ? "ab " : ""}${fmtEUR(price)}</span>
             <span class="price-unit">/ Monat</span>
           </div>
           ${setupHtml}
@@ -349,7 +640,7 @@
 
           <ul class="feat">${featHtml}</ul>
 
-          <button class="btn btn-primary" type="button" onclick="openContactModal()">
+          <button class="btn ${p.highlighted ? "btn-primary" : "btn-ghost"}" type="button" onclick="openContactModal('Occto ${p.name}')">
             ${discounted ? "Angebot sichern" : p.cta}
           </button>
         </div>`;
@@ -374,7 +665,7 @@
       }
       const pad = (n) => String(n).padStart(2, "0");
       document.getElementById("dealAmount").textContent = `${fmtEUR(OFFER_DISCOUNT)} Rabatt`;
-      document.getElementById("offerSub").innerHTML = `auf die einmalige Einrichtung<br>bei Unterschrift bis <b>${fmtDate(offerEnd)}</b>`;
+      document.getElementById("offerSub").innerHTML = `auf die einmalige Einrichtung bei Unterschrift bis <b>${fmtDate(offerEnd)}</b>`;
       document.getElementById("cdD").textContent = Math.floor(ms / 86400000);
       document.getElementById("cdH").textContent = pad(Math.floor(ms / 3600000) % 24);
       document.getElementById("cdM").textContent = pad(Math.floor(ms / 60000) % 60);
@@ -484,9 +775,9 @@
     // Contact modal
     const contactModal = document.getElementById("contactModal");
     const modalClose = document.getElementById("modalClose");
-    function openContactModal() {
+    function openContactModal(plan) {
       const option = setupMode === "included" ? "Einrichtung in Raten" : "Einrichtung einmalig";
-      const text = `Hallo Wesley, ich interessiere mich für eine Web-App (${option}).`;
+      const text = `Hallo Wesley, ich interessiere mich für ${plan || "Occto"} für meine Tanzschule (${option}).`;
       document.getElementById("waBtn").href = `https://wa.me/4917642772208?text=${encodeURIComponent(text)}`;
       contactModal.hidden = false;
     }

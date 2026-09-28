@@ -11,10 +11,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../shared-assets/style.css?v=4">
+  <link rel="stylesheet" href="../shared-assets/style.css?v=7">
+  <style>
+    .toggle.toggle-segmented button { flex-direction: row; gap: 8px; min-width: 0; padding: 10px 22px; }
+  </style>
 </head>
 
-<body>
+<body class="clean">
   <section data-locked id="root">
     <div class="vignette"></div>
     <canvas class="particles" id="particles"></canvas>
@@ -45,7 +48,7 @@
         <h1 class="title">Website</h1>
         <div class="toggle-wrap">
           <div class="toggle-group">
-            <div class="toggle" role="tablist">
+            <div class="toggle toggle-segmented" role="tablist">
               <button id="btnMonthly" class="active" type="button">Monatlich</button>
               <button id="btnYearly" type="button">
                 Jährlich

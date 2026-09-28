@@ -1351,3 +1351,143 @@ canvas.particles {
     flex-wrap: wrap
   }
 }
+
+/* ── Clean look (body.clean) ─────────────────────────
+   Ruhigere, minimalistische Variante für alle Preisseiten */
+.clean .card {
+  padding: 32px 28px 28px;
+  border-radius: 18px;
+  box-shadow: none
+}
+
+.clean button {
+  font-family: inherit
+}
+
+.clean .card.pop,
+.clean .card.pop.is-anim {
+  border-color: #972738;
+  box-shadow: none;
+  transform: none
+}
+
+.clean .card.pop.is-anim {
+  animation-name: fadeUp
+}
+
+.clean .card.pop:hover {
+  transform: translateY(-2px);
+  box-shadow: none;
+  border-color: #972738
+}
+
+[data-theme="dark"] .clean .card.pop,
+[data-theme="dark"] .clean .card.pop:hover {
+  border-color: #e0607a
+}
+
+.clean .badge {
+  top: 30px;
+  right: 28px;
+  background: #972738;
+  color: #fff;
+  border: 0;
+  font-weight: 700;
+  padding: 4px 11px
+}
+
+.clean .badge .dot {
+  display: none
+}
+
+.clean .plan-name {
+  font-size: 22px
+}
+
+.clean .setup,
+.clean .setup-line {
+  display: block;
+  margin: 10px 0 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  font-size: 13px;
+  color: var(--muted)
+}
+
+.clean .setup b {
+  color: var(--text);
+  font-weight: 600
+}
+
+.clean .setup-line .old-price,
+.clean .setup .old-price {
+  margin: 0 0 0 4px;
+  opacity: .7
+}
+
+.clean .savings.show {
+  height: auto;
+  margin-top: 8px;
+  padding: 0;
+  background: none;
+  border: 0;
+  font-weight: 600;
+  color: var(--text-soft)
+}
+
+.clean .savings .savings-dot {
+  display: none
+}
+
+.clean .divider {
+  margin: 24px 0
+}
+
+.clean .feat li {
+  font-size: 14px
+}
+
+.clean .deal {
+  box-shadow: none;
+  border-radius: 18px
+}
+
+.clean .addon-card {
+  border-radius: 18px;
+  box-shadow: none
+}
+
+@media(max-width:640px) {
+  .clean .card {
+    padding: 26px 20px 22px
+  }
+
+  .clean .badge {
+    top: 26px;
+    right: 20px
+  }
+}
+
+/* Umschalter schlicht: einzeilig, mit kleiner Überschrift */
+.clean .toggle-label {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted)
+}
+
+.clean .toggle.toggle-segmented button {
+  flex-direction: row;
+  min-width: 0;
+  padding: 10px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.005em
+}
+
+.clean .offer-head .toggle.toggle-segmented button {
+  padding: 10px 16px
+}
