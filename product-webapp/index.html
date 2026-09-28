@@ -79,26 +79,25 @@
     .modal-name { font-size: 19px; margin-bottom: 18px; }
     .modal-line { font-size: 18px; }
     .modal-line span { font-size: 14px; }
-    .offer-code {
+    .wa-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
       margin-bottom: 16px;
-      padding: 18px 20px;
-      border: 2px dashed rgba(151, 39, 56, .45);
-      border-radius: 16px;
-      background: rgba(151, 39, 56, .06);
-      text-align: center;
+      padding: 16px 20px;
+      border-radius: 9999px;
+      background: #25d366;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(37, 211, 102, .3);
+      transition: filter .15s ease, transform .15s ease;
     }
-    .offer-code span, .offer-code small { display: block; color: var(--muted); }
-    .offer-code span { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; font-weight: 600; }
-    .offer-code b {
-      display: block;
-      margin: 6px 0 4px;
-      font-size: 32px;
-      letter-spacing: .06em;
-      color: #972738;
-      user-select: all;
-    }
-    [data-theme="dark"] .offer-code b { color: #e0607a; }
-    .offer-code small { font-size: 13px; }
+    .wa-btn:hover { filter: brightness(.95); transform: translateY(-1px); }
+    .wa-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
     @media (max-width: 480px) {
       .modal-box { padding: 40px 22px 26px; }
       .modal-box h3 { font-size: 26px; }
@@ -213,6 +212,9 @@
       <div class="legal">
         <p><b>Preise:</b> Alle angegebenen Preise verstehen sich als Nettopreise zzgl. der jeweils gültigen gesetzlichen
           Mehrwertsteuer.</p>
+        <p><b>Angebot:</b> Der Rabatt von 100&nbsp;€ gilt ausschließlich bei einmaliger Zahlung der Einrichtungsgebühr
+          und bei Vertragsunterzeichnung innerhalb der angegebenen Frist. Bei Ratenzahlung der Einrichtung ist der Rabatt
+          ausgeschlossen. Eine Kombination mit anderen Rabatten ist nicht möglich.</p>
         <p><b>Laufzeit & Kündigung:</b> Der Servicevertrag hat eine
           Mindestvertragslaufzeit von 24 Monaten. Die Kündigungsfrist beträgt drei Monate zum Ende der jeweiligen
           Vertragslaufzeit. Erfolgt keine fristgerechte Kündigung, verlängert sich der Vertrag automatisch um weitere 12
@@ -241,12 +243,11 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
       </button>
       <h3 id="modalTitle">Jetzt anfragen</h3>
-      <p class="modal-sub">Wir freuen uns auf Ihre Nachricht:</p>
-      <div class="offer-code">
-        <span>Dein Angebotscode</span>
-        <b>App2026</b>
-        <small>Bitte bei deiner Anfrage angeben</small>
-      </div>
+      <p class="modal-sub">Schreib uns direkt auf WhatsApp, wir melden uns schnell bei dir.</p>
+      <a class="wa-btn" id="waBtn" href="https://wa.me/4917642772208" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.57.93.95-3.48-.22-.36a9.42 9.42 0 0 1-1.44-5.02c0-5.2 4.23-9.43 9.44-9.43a9.37 9.37 0 0 1 6.67 2.77 9.37 9.37 0 0 1 2.76 6.67c0 5.2-4.24 9.43-9.44 9.43zm8.03-17.46A11.28 11.28 0 0 0 12.05.72C5.8.72.7 5.8.7 12.07c0 2 .52 3.95 1.52 5.67L.6 23.28l5.67-1.49a11.33 11.33 0 0 0 5.78 1.47h.01c6.26 0 11.35-5.09 11.35-11.35 0-3.03-1.18-5.88-3.33-8.03z"/></svg>
+        Schreib uns auf WhatsApp
+      </a>
       <div class="modal-contact">
         <p class="modal-name">Wesley Oliveira</p>
         <p class="modal-line"><span>Tel. oder WhatsApp:</span><a href="tel:+4917642772208">+49 176 42772208</a></p>
@@ -262,7 +263,7 @@
     const plans = [
       {
         id: "business",
-        name: "Business-Paket",
+        name: "Deine Web-App",
         monthly: 190,
         setupAmount: 1540,
         features: [
@@ -303,7 +304,9 @@
     let setupMode = "separate";
 
     const fmtEUR = (n) => new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n);
-    const monthlyWithSetup = (p, setup) => p.monthly + Math.ceil(setup / SETUP_INSTALLMENT_MONTHS);
+    // Ratenzahlung: feste Einrichtung von INSTALLMENT_SETUP auf die Mindestlaufzeit verteilt (1.440 € / 24 = 60 €)
+    const INSTALLMENT_SETUP = 1440;
+    const monthlyWithSetup = (p) => p.monthly + Math.round(INSTALLMENT_SETUP / SETUP_INSTALLMENT_MONTHS);
 
     function render() {
       const grid = document.getElementById("grid");
@@ -317,17 +320,18 @@
            </li>`
         ).join("");
 
-        const setup = active ? p.setupAmount - OFFER_DISCOUNT : p.setupAmount;
-        let price, oldPrice = "", setupHtml;
+        const discounted = active && setupMode === "separate";
+        const setup = discounted ? p.setupAmount - OFFER_DISCOUNT : p.setupAmount;
+        let price, setupHtml;
         if (setupMode === "included") {
-          price = monthlyWithSetup(p, setup);
-          setupHtml = `<div class="setup">Einrichtung inklusive <span>ab Monat ${SETUP_INSTALLMENT_MONTHS + 1}: <b>${fmtEUR(p.monthly)}</b></span></div>`;
+          price = monthlyWithSetup(p);
+          setupHtml = "";
         } else {
           price = p.monthly;
-          const old = active ? `<span class="old-price">${fmtEUR(p.setupAmount)}</span>` : "";
+          const old = discounted ? `<span class="old-price">${fmtEUR(p.setupAmount)}</span>` : "";
           setupHtml = `<div class="setup">+ Einrichtung einmalig: ${old}<b>${fmtEUR(setup)}</b></div>`;
         }
-        const badge = active ? `<div class="badge"><span class="dot"></span>${fmtEUR(OFFER_DISCOUNT)} gespart</div>` : "";
+        const badge = discounted ? `<div class="badge"><span class="dot"></span>${fmtEUR(OFFER_DISCOUNT)} gespart</div>` : "";
 
         const html = `
         <div class="card pop is-anim" style="animation-delay:${0.32 + i * 0.08}s">
@@ -335,7 +339,6 @@
           <h3 class="plan-name">${p.name}</h3>
 
           <div class="price-row">
-            ${oldPrice}
             <span class="price">${fmtEUR(price)}</span>
             <span class="price-unit">/ Monat</span>
           </div>
@@ -346,7 +349,7 @@
           <ul class="feat">${featHtml}</ul>
 
           <button class="btn btn-primary" type="button" onclick="openContactModal()">
-            ${active ? "Angebot sichern" : p.cta}
+            ${discounted ? "Angebot sichern" : p.cta}
           </button>
         </div>`;
         grid.insertAdjacentHTML("beforeend", html);
@@ -370,7 +373,7 @@
       }
       const pad = (n) => String(n).padStart(2, "0");
       document.getElementById("dealAmount").textContent = `${fmtEUR(OFFER_DISCOUNT)} Rabatt`;
-      document.getElementById("offerSub").innerHTML = `auf die Einrichtung<br>bei Unterschrift bis <b>${fmtDate(offerEnd)}</b>`;
+      document.getElementById("offerSub").innerHTML = `auf die einmalige Einrichtung<br>bei Unterschrift bis <b>${fmtDate(offerEnd)}</b>`;
       document.getElementById("cdD").textContent = Math.floor(ms / 86400000);
       document.getElementById("cdH").textContent = pad(Math.floor(ms / 3600000) % 24);
       document.getElementById("cdM").textContent = pad(Math.floor(ms / 60000) % 60);
@@ -481,6 +484,9 @@
     const contactModal = document.getElementById("contactModal");
     const modalClose = document.getElementById("modalClose");
     function openContactModal() {
+      const option = setupMode === "included" ? "Einrichtung in Raten" : "Einrichtung einmalig";
+      const text = `Hallo Wesley, ich interessiere mich für eine Web-App (${option}).`;
+      document.getElementById("waBtn").href = `https://wa.me/4917642772208?text=${encodeURIComponent(text)}`;
       contactModal.hidden = false;
     }
     function closeContactModal() {
