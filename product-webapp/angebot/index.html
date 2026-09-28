@@ -280,14 +280,21 @@
       },
     ];
 
-    // Angebotsfrist: Standard ist OFFER_END, pro Kunde überschreibbar per URL, z. B. angebot/?bis=2026-10-15
-    const OFFER_END_DEFAULT = "2026-10-04";
+    // Angebotsfrist: verlängert sich automatisch jede Woche bis Sonntag 23:59 (ab OFFER_FIRST_END).
+    // Pro Kunde feste Frist per URL möglich, z. B. angebot/?bis=2026-10-15 (läuft dann regulär ab).
+    const OFFER_FIRST_END = "2026-10-04";
     const OFFER_DISCOUNT = 100;
-    const offerEnd = (() => {
+    const fixedEndParam = (() => {
       const param = new URLSearchParams(location.search).get("bis");
-      const day = /^\d{4}-\d{2}-\d{2}$/.test(param || "") ? param : OFFER_END_DEFAULT;
-      return new Date(`${day}T23:59:59`);
+      return /^\d{4}-\d{2}-\d{2}$/.test(param || "") ? param : null;
     })();
+    function computeOfferEnd() {
+      if (fixedEndParam) return new Date(`${fixedEndParam}T23:59:59`);
+      const end = new Date(`${OFFER_FIRST_END}T23:59:59`);
+      while (end.getTime() < Date.now()) end.setDate(end.getDate() + 7);
+      return end;
+    }
+    let offerEnd = computeOfferEnd();
     const offerActive = () => Date.now() <= offerEnd.getTime();
 
     // Bei "Einrichtung in Raten" wird die Einrichtung auf die Mindestlaufzeit verteilt (auf volle Euro aufgerundet)
@@ -351,6 +358,10 @@
     const fmtDate = (d) => d.toLocaleDateString("de-DE", { weekday: "long", day: "numeric", month: "long" });
 
     function renderCountdown() {
+      if (!fixedEndParam && offerEnd.getTime() < Date.now()) {
+        offerEnd = computeOfferEnd();
+        render();
+      }
       const ms = offerEnd.getTime() - Date.now();
       if (ms < 0) {
         document.getElementById("offerKicker").textContent = "Angebot abgelaufen";
