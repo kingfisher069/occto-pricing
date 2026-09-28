@@ -280,7 +280,7 @@
     ];
 
     // Angebotsfrist: verlängert sich automatisch jede Woche bis Sonntag 23:59 (ab OFFER_FIRST_END).
-    // Pro Kunde feste Frist per URL möglich, z. B. angebot/?bis=2026-10-15 (läuft dann regulär ab).
+    // Pro Kunde feste Frist per URL möglich, z. B. product-webapp/?bis=2026-10-15 (läuft dann regulär ab).
     const OFFER_FIRST_END = "2026-10-04";
     const OFFER_DISCOUNT = 100;
     const fixedEndParam = (() => {
@@ -321,8 +321,7 @@
         let price, oldPrice = "", setupHtml;
         if (setupMode === "included") {
           price = monthlyWithSetup(p, setup);
-          if (active) oldPrice = `<span class="price-unit old-price">${fmtEUR(monthlyWithSetup(p, p.setupAmount))}</span>`;
-          setupHtml = `<div class="setup">Einrichtung inklusive, keine Einmalzahlung</div>`;
+          setupHtml = `<div class="setup">Einrichtung inklusive <span>ab Monat ${SETUP_INSTALLMENT_MONTHS + 1}: <b>${fmtEUR(p.monthly)}</b></span></div>`;
         } else {
           price = p.monthly;
           const old = active ? `<span class="old-price">${fmtEUR(p.setupAmount)}</span>` : "";
