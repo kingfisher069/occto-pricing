@@ -7,13 +7,146 @@
     if (localStorage.getItem('occto-theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Occto – Pricing</title>
+  <title>Occto – Angebot Web-App</title>
+  <meta name="robots" content="noindex, nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../shared-assets/style.css?v=4">
+  <link rel="stylesheet" href="../../shared-assets/style.css?v=4">
   <style>
     .grid.grid-single { grid-template-columns: 1fr; max-width: 420px; }
+    .accent { color: #972738; }
+    [data-theme="dark"] .accent { color: #e0607a; }
+    .offer-head .title { margin-bottom: 28px; }
+    .deal {
+      max-width: 400px;
+      margin: 0 auto 36px;
+      padding: 20px 22px 16px;
+      border-radius: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-pop);
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    .is-ready .deal { animation: sIn .6s ease .26s forwards; }
+    .deal-amount {
+      font-size: clamp(26px, 5vw, 32px);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      line-height: 1;
+      color: #972738;
+    }
+    [data-theme="dark"] .deal-amount { color: #e0607a; }
+    .deal-text {
+      margin: 8px 0 0;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+    .deal-text { text-wrap: balance; }
+    .deal-text b { color: var(--text); font-weight: 600; white-space: nowrap; }
+    .countdown {
+      display: flex;
+      justify-content: center;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+    .countdown div { flex: 1; max-width: 90px; text-align: center; }
+    .countdown div + div { border-left: 1px solid var(--border); }
+    .countdown b {
+      display: block;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .countdown span {
+      display: block;
+      margin-top: 5px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted-soft);
+    }
+    .countdown[hidden] { display: none; }
+    .offer-head .toggle-wrap { margin-bottom: 8px; }
+    /* Popup auf der Angebotsseite größer */
+    .modal-box { max-width: 480px; padding: 48px 40px 40px; }
+    .modal-box h3 { font-size: 30px; }
+    .modal-sub { font-size: 16px; margin-bottom: 24px; }
+    .modal-contact { padding: 26px; }
+    .modal-name { font-size: 19px; margin-bottom: 18px; }
+    .modal-line { font-size: 18px; }
+    .modal-line span { font-size: 14px; }
+    .offer-code {
+      margin-bottom: 16px;
+      padding: 18px 20px;
+      border: 2px dashed rgba(151, 39, 56, .45);
+      border-radius: 16px;
+      background: rgba(151, 39, 56, .06);
+      text-align: center;
+    }
+    .offer-code span, .offer-code small { display: block; color: var(--muted); }
+    .offer-code span { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; font-weight: 600; }
+    .offer-code b {
+      display: block;
+      margin: 6px 0 4px;
+      font-size: 32px;
+      letter-spacing: .06em;
+      color: #972738;
+      user-select: all;
+    }
+    [data-theme="dark"] .offer-code b { color: #e0607a; }
+    .offer-code small { font-size: 13px; }
+    @media (max-width: 480px) {
+      .modal-box { padding: 40px 22px 26px; }
+      .modal-box h3 { font-size: 26px; }
+      .modal-line { font-size: 17px; }
+    }
+    .old-price { text-decoration: line-through; opacity: .55; margin-right: 6px; }
+    @media (max-width: 480px) {
+      .deal { padding: 18px 16px 14px; }
+      .countdown b { font-size: 18px; }
+      .toggle.toggle-segmented button { min-width: 116px; padding: 8px 16px; font-size: 14px; }
+    }
+
+    /* Einheitliche Spalte: Angebotsbox, Umschalter und Karte gleich breit */
+    :root { --offer-w: 440px; --offer-gap: 32px; }
+    .offer-head { margin-bottom: var(--offer-gap); }
+    .offer-head .title { margin-bottom: 40px; }
+    .deal,
+    .offer-head .toggle-wrap,
+    .grid.grid-single {
+      width: 100%;
+      max-width: var(--offer-w);
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .deal { margin-bottom: var(--offer-gap); padding: 24px 24px 20px; }
+    .offer-head .toggle-wrap { margin-bottom: 0; }
+    .offer-head .toggle.toggle-segmented { display: flex; width: 100%; }
+    .offer-head .toggle.toggle-segmented button { flex: 1; min-width: 0; justify-content: center; }
+    .countdown div { max-width: none; }
+
+    /* Karte ohne Vergrößerung, damit sie exakt so breit ist wie Box und Umschalter */
+    .grid.grid-single .card.pop { transform: none; }
+    .grid.grid-single .card.pop.is-anim { animation-name: fadeUp; }
+    .grid.grid-single .card.pop:hover { transform: translateY(-2px); }
+    .grid.grid-single .card { padding: 28px 24px 24px; }
+    .grid.grid-single .badge { top: 20px; right: 20px; }
+    .grid.grid-single .plan-name { padding-right: 130px; margin-bottom: 16px; }
+
+    @media (max-width: 640px) {
+      :root { --offer-gap: 24px; }
+      .offer-head .title { font-size: clamp(34px, 10vw, 44px); margin-bottom: 28px; }
+      .deal { padding: 20px 16px 16px; }
+      .grid.grid-single .card { padding: 24px 18px 20px; }
+      .grid.grid-single .badge { top: 16px; right: 16px; }
+      .grid.grid-single .plan-name { padding-right: 0; margin-top: 28px; }
+      .section-divider { margin-top: 48px; }
+    }
   </style>
   <style>
     .legal-footer {
@@ -33,17 +166,17 @@
     <canvas class="particles" id="particles"></canvas>
 
     <header class="site-nav">
-      <a href="../index.html" aria-label="Occto Startseite">
-        <img class="site-nav-logo logo-light" src="../shared-assets/occto-logo-black.svg" alt="Occto" />
-        <img class="site-nav-logo logo-dark" src="../shared-assets/occto-logo-white.svg" alt="Occto" />
+      <a href="../../index.html" aria-label="Occto Startseite">
+        <img class="site-nav-logo logo-light" src="../../shared-assets/occto-logo-black.svg" alt="Occto" />
+        <img class="site-nav-logo logo-dark" src="../../shared-assets/occto-logo-white.svg" alt="Occto" />
       </a>
       <button class="nav-burger" type="button" onclick="toggleMobileNav()" aria-label="Menü öffnen">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" /></svg>
       </button>
       <nav class="site-nav-links" id="navLinks">
-        <a href="../index.html" class="nav-link">Preise</a>
-        <a href="../product-website/" class="nav-link">Website</a>
-        <a href="../product-webapp/" class="nav-link is-active">Web-Apps</a>
+        <a href="../../index.html" class="nav-link">Preise</a>
+        <a href="../../product-website/" class="nav-link">Website</a>
+        <a href="../../product-webapp/" class="nav-link is-active">Web-Apps</a>
         <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Theme wechseln">
           <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" /></svg>
           <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" /></svg>
@@ -53,16 +186,23 @@
     </header>
 
     <div class="container">
-      <div class="head">
-        <p class="kicker">Plan &amp; Pricing</p>
-        <h1 class="title">Web-Apps</h1>
+      <div class="head offer-head">
+        <p class="kicker" id="offerKicker">Angebot der Woche</p>
+        <h1 class="title">Deine Web-App.</h1>
+        <div class="deal">
+          <div class="deal-amount" id="dealAmount">&nbsp;</div>
+          <p class="deal-text" id="offerSub">&nbsp;</p>
+          <div class="countdown" id="countdown">
+            <div><b id="cdD">0</b><span>Tage</span></div>
+            <div><b id="cdH">00</b><span>Std</span></div>
+            <div><b id="cdM">00</b><span>Min</span></div>
+            <div><b id="cdS">00</b><span>Sek</span></div>
+          </div>
+        </div>
         <div class="toggle-wrap">
-          <div class="toggle-group">
-            <div class="toggle toggle-segmented" role="tablist">
-              <button id="btnSeparate" class="active" type="button"><small>Einrichtung</small>einmalig</button>
-              <button id="btnIncluded" type="button"><small>Einrichtung</small>in Raten</button>
-            </div>
-            <div class="save-line" id="saveLine">&nbsp;</div>
+          <div class="toggle toggle-segmented" role="tablist">
+            <button id="btnSeparate" class="active" type="button"><small>Einrichtung</small>einmalig</button>
+            <button id="btnIncluded" type="button"><small>Einrichtung</small>in Raten</button>
           </div>
         </div>
       </div>
@@ -80,7 +220,7 @@
           Monate. Die Kündigung bedarf der Textform (z.&nbsp;B. E-Mail).</p>
 
         <div class="legal-footer">
-          <a href="../agb.html">Allgemeine Geschäftsbedingungen ansehen &rarr;</a>
+          <a href="../../agb.html">Allgemeine Geschäftsbedingungen ansehen &rarr;</a>
         </div>
       </div>
     </div>
@@ -89,9 +229,9 @@
   <footer class="site-footer">
     <p class="footer-copy">&copy; 2026 Occto</p>
     <nav class="footer-links">
-      <a href="../impressum.html">Impressum</a>
-      <a href="../datenschutz.html">Datenschutz</a>
-      <a href="../agb.html">AGB</a>
+      <a href="../../impressum.html">Impressum</a>
+      <a href="../../datenschutz.html">Datenschutz</a>
+      <a href="../../agb.html">AGB</a>
       <button type="button" onclick="openContactModal()">Kontakt</button>
     </nav>
   </footer>
@@ -103,6 +243,11 @@
       </button>
       <h3 id="modalTitle">Jetzt anfragen</h3>
       <p class="modal-sub">Wir freuen uns auf Ihre Nachricht:</p>
+      <div class="offer-code">
+        <span>Dein Angebotscode</span>
+        <b>App2026</b>
+        <small>Bitte bei deiner Anfrage angeben</small>
+      </div>
       <div class="modal-contact">
         <p class="modal-name">Wesley Oliveira</p>
         <p class="modal-line"><span>Tel. oder WhatsApp:</span><a href="tel:+4917642772208">+49 176 42772208</a></p>
@@ -118,10 +263,9 @@
     const plans = [
       {
         id: "business",
-        name: "Business-Paket",
-        concept: "Deine individuelle Web-App",
+        name: "Deine Web-App",
         monthly: 190,
-        setupAmount: 1440,
+        setupAmount: 1540,
         features: [
           "1 Benutzerrolle (Admin)",
           "Datenbankstruktur",
@@ -136,20 +280,30 @@
       },
     ];
 
-    // Bei "Einrichtung in Raten" wird die Einrichtung auf die Mindestlaufzeit verteilt
+    // Angebotsfrist: Standard ist OFFER_END, pro Kunde überschreibbar per URL, z. B. angebot/?bis=2026-10-15
+    const OFFER_END_DEFAULT = "2026-10-04";
+    const OFFER_DISCOUNT = 100;
+    const offerEnd = (() => {
+      const param = new URLSearchParams(location.search).get("bis");
+      const day = /^\d{4}-\d{2}-\d{2}$/.test(param || "") ? param : OFFER_END_DEFAULT;
+      return new Date(`${day}T23:59:59`);
+    })();
+    const offerActive = () => Date.now() <= offerEnd.getTime();
+
+    // Bei "Einrichtung in Raten" wird die Einrichtung auf die Mindestlaufzeit verteilt (auf volle Euro aufgerundet)
     const SETUP_INSTALLMENT_MONTHS = 24;
 
     // "separate" | "included"
     let setupMode = "separate";
 
     const fmtEUR = (n) => new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n);
+    const monthlyWithSetup = (p, setup) => p.monthly + Math.ceil(setup / SETUP_INSTALLMENT_MONTHS);
 
     function render() {
       const grid = document.getElementById("grid");
       grid.innerHTML = "";
+      const active = offerActive();
       plans.forEach((p, i) => {
-        const popClass = p.highlighted ? "pop is-anim" : "";
-
         const featHtml = p.features.map(f =>
           `<li>
              <span class="check">${ICON_CHECK}</span>
@@ -157,20 +311,26 @@
            </li>`
         ).join("");
 
-        const btnClass = p.highlighted ? "btn btn-primary" : "btn btn-ghost";
-
-        const setupRate = p.setupAmount / SETUP_INSTALLMENT_MONTHS;
-        const price = setupMode === "included" ? p.monthly + setupRate : p.monthly;
-        const setupHtml = setupMode === "included"
-          ? `<div class="setup">Einrichtung enthalten: <b>${SETUP_INSTALLMENT_MONTHS} × ${fmtEUR(setupRate)}</b></div>`
-          : `<div class="setup">+ Einmalige Einrichtung: <b>${fmtEUR(p.setupAmount)}</b></div>`;
+        const setup = active ? p.setupAmount - OFFER_DISCOUNT : p.setupAmount;
+        let price, oldPrice = "", setupHtml;
+        if (setupMode === "included") {
+          price = monthlyWithSetup(p, setup);
+          if (active) oldPrice = `<span class="price-unit old-price">${fmtEUR(monthlyWithSetup(p, p.setupAmount))}</span>`;
+          setupHtml = `<div class="setup">Einrichtung inklusive, keine Einmalzahlung</div>`;
+        } else {
+          price = p.monthly;
+          const old = active ? `<span class="old-price">${fmtEUR(p.setupAmount)}</span>` : "";
+          setupHtml = `<div class="setup">+ Einrichtung einmalig: ${old}<b>${fmtEUR(setup)}</b></div>`;
+        }
+        const badge = active ? `<div class="badge"><span class="dot"></span>${fmtEUR(OFFER_DISCOUNT)} gespart</div>` : "";
 
         const html = `
-        <div class="card ${popClass}" style="animation-delay:${0.32 + i * 0.08}s">
+        <div class="card pop is-anim" style="animation-delay:${0.32 + i * 0.08}s">
+          ${badge}
           <h3 class="plan-name">${p.name}</h3>
-          <p class="plan-concept">${p.concept}</p>
 
           <div class="price-row">
+            ${oldPrice}
             <span class="price">${fmtEUR(price)}</span>
             <span class="price-unit">/ Monat</span>
           </div>
@@ -180,17 +340,38 @@
 
           <ul class="feat">${featHtml}</ul>
 
-          <button class="${btnClass}" type="button" onclick="openContactModal()">
-            ${p.cta}
+          <button class="btn btn-primary" type="button" onclick="openContactModal()">
+            ${active ? "Angebot sichern" : p.cta}
           </button>
         </div>`;
         grid.insertAdjacentHTML("beforeend", html);
       });
-
-      document.getElementById("saveLine").textContent = setupMode === "included"
-        ? "Keine Einmalzahlung, die Einrichtung ist im Monatspreis verteilt"
-        : "Einrichtung wird einmalig zu Projektbeginn bezahlt";
     }
+
+    const fmtDate = (d) => d.toLocaleDateString("de-DE", { weekday: "long", day: "numeric", month: "long" });
+
+    function renderCountdown() {
+      const ms = offerEnd.getTime() - Date.now();
+      if (ms < 0) {
+        document.getElementById("offerKicker").textContent = "Angebot abgelaufen";
+        document.getElementById("dealAmount").textContent = "Angebot beendet";
+        document.getElementById("offerSub").textContent = `Das Angebot lief bis ${fmtDate(offerEnd)}. Es gelten die regulären Preise.`;
+        document.getElementById("countdown").hidden = true;
+        return false;
+      }
+      const pad = (n) => String(n).padStart(2, "0");
+      document.getElementById("dealAmount").textContent = `${fmtEUR(OFFER_DISCOUNT)} Rabatt`;
+      document.getElementById("offerSub").innerHTML = `auf die Einrichtung<br>bei Unterschrift bis <b>${fmtDate(offerEnd)}</b>`;
+      document.getElementById("cdD").textContent = Math.floor(ms / 86400000);
+      document.getElementById("cdH").textContent = pad(Math.floor(ms / 3600000) % 24);
+      document.getElementById("cdM").textContent = pad(Math.floor(ms / 60000) % 60);
+      document.getElementById("cdS").textContent = pad(Math.floor(ms / 1000) % 60);
+      return true;
+    }
+    renderCountdown();
+    const offerTimer = setInterval(() => {
+      if (!renderCountdown()) { clearInterval(offerTimer); render(); }
+    }, 1000);
 
     const btnS = document.getElementById("btnSeparate");
     const btnI = document.getElementById("btnIncluded");
